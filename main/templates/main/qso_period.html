@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+{% extends "main/base.html" %}
+
+{% block title %}ra3fd log{% endblock %}
+
+
+
+{% block content %}
+    <html>
+        <head>
+            <style type="text/css">
+
+            </style>
+
+        </head>
+
+    <br>
+
+    <div style="text-align: center;">
+
+
+    </div>
+
+    <br>
+    <table bgcolor ="0A135D" align="center" border="2" cellspacing=2 cellpadding=2>
+
+        <tr style="text-align: center; font-size: 11px">
+
+            <td  width="100" rowspan="2">QSO in year</td>
+            <td  height="23" width="100">1994</td>
+            <td  width="100">1995</td>
+            <td  width="100">1996</td>
+            <td  width="100">1997</td>
+            <td  width="100">1998</td>
+            <td  width="100">1999</td>
+            <td  width="100">2000</td>
+            <td  width="100">2001</td>
+            <td  width="100">2002</td>
+            <td  width="100">2003</td>
+            <td  width="100">2004</td>
+            <td  width="100">2005</td>
+            <td  width="100">2006</td>
+            <td  width="100">2007</td>
+            <td  width="100">2008</td>
+            <td  width="100">2009</td>
+            <td  width="100">2010</td>
+            <td  width="100">2011</td>
+            <td  width="100">2012</td>
+            <td  width="100">2013</td>
+            <td  width="100">2014</td>
+            <td  width="100">2015</td>
+            <td  width="100">2016</td>
+            <td  width="100">2017</td>
+            <td  width="100">2018</td>
+            <td  width="100">2019</td>
+            <td  width="100">2020</td>
+            <td  width="100">2021</td>
+
+        </tr>
+        <tr style="text-align: center; font-size: 14px">
+            <td> {{ dty1994 }} </td>
+            <td> {{ dty1995 }} </td>
+            <td> {{ dty1996 }} </td>
+            <td> {{ dty1997 }} </td>
+            <td> {{ dty1998 }} </td>
+            <td> {{ dty1999 }} </td>
+            <td> {{ dty2000 }} </td>
+            <td> {{ dty2001 }} </td>
+            <td> {{ dty2002 }} </td>
+            <td> {{ dty2003 }} </td>
+            <td> {{ dty2004 }} </td>
+            <td> {{ dty2005 }} </td>
+            <td> {{ dty2006 }} </td>
+            <td> {{ dty2007 }} </td>
+            <td> {{ dty2008 }} </td>
+            <td> {{ dty2009 }} </td>
+            <td> {{ dty2010 }} </td>
+            <td> {{ dty2011 }} </td>
+            <td> {{ dty2012 }} </td>
+            <td> {{ dty2013 }} </td>
+            <td> {{ dty2014 }} </td>
+            <td> {{ dty2015 }} </td>
+            <td> {{ dty2016 }} </td>
+            <td> {{ dty2017 }} </td>
+            <td> {{ dty2018 }} </td>
+			<td> {{ dty2019 }} </td>
+            <td> {{ dty2020 }} </td>
+            <td> {{ dty2021 }} </td>
+        <tr height="25" style="text-align: center; font-size: 14px">
+            <td style="font-size: 11px" width="150">new calls</td>
+            <td> {{ dtcl_1994 }} </td>
+            <td> {{ dtcl_1995 }} </td>
+            <td> {{ dtcl_1996 }} </td>
+            <td> {{ dtcl_1997 }} </td>
+            <td> {{ dtcl_1998 }} </td>
+            <td> {{ dtcl_1999 }} </td>
+            <td> {{ dtcl_2000 }} </td>
+            <td> {{ dtcl_2001 }} </td>
+            <td> {{ dtcl_2002 }} </td>
+            <td> {{ dtcl_2003 }} </td>
+            <td> {{ dtcl_2004 }} </td>
+            <td> {{ dtcl_2005 }} </td>
+            <td> {{ dtcl_2006 }} </td>
+            <td> {{ dtcl_2007 }} </td>
+            <td> {{ dtcl_2008 }} </td>
+            <td> {{ dtcl_2009 }} </td>
+            <td> {{ dtcl_2010 }} </td>
+            <td> {{ dtcl_2011 }} </td>
+            <td> {{ dtcl_2012 }} </td>
+            <td> {{ dtcl_2013 }} </td>
+            <td> {{ dtcl_2014 }} </td>
+            <td> {{ dtcl_2015 }} </td>
+            <td> {{ dtcl_2016 }} </td>
+            <td> {{ dtcl_2017 }} </td>
+            <td> {{ dtcl_2018 }} </td>
+            <td> {{ dtcl_2019 }} </td>
+            <td> {{ dtcl_2020 }} </td>
+            <td> {{ dtcl_2021 }} </td>
+        </tr>
+
+        <tr height="25" style="text-align: center; font-size: 14px">
+            <td style="font-size: 11px" width="150">%</td>
+            <td> {{ procent_ncalls_1994 }} </td>
+            <td> {{ procent_ncalls_1995 }} </td>
+            <td> {{ procent_ncalls_1996 }} </td>
+            <td> {{ procent_ncalls_1997 }} </td>
+            <td> {{ procent_ncalls_1998 }} </td>
+            <td> {{ procent_ncalls_1999 }} </td>
+            <td> {{ procent_ncalls_2000 }} </td>
+            <td> {{ procent_ncalls_2001 }} </td>
+            <td> {{ procent_ncalls_2002 }} </td>
+            <td> {{ procent_ncalls_2003 }} </td>
+            <td> {{ procent_ncalls_2004 }} </td>
+            <td> {{ procent_ncalls_2005 }} </td>
+            <td> {{ procent_ncalls_2006 }} </td>
+            <td> {{ procent_ncalls_2007 }} </td>
+            <td> {{ procent_ncalls_2008 }} </td>
+            <td> {{ procent_ncalls_2009 }} </td>
+            <td> {{ procent_ncalls_2010 }} </td>
+            <td> {{ procent_ncalls_2011 }} </td>
+            <td> {{ procent_ncalls_2012 }} </td>
+            <td> {{ procent_ncalls_2013 }} </td>
+            <td> {{ procent_ncalls_2014 }} </td>
+            <td> {{ procent_ncalls_2015 }} </td>
+            <td> {{ procent_ncalls_2016 }} </td>
+            <td> {{ procent_ncalls_2017 }} </td>
+            <td> {{ procent_ncalls_2018 }} </td>
+            <td> {{ procent_ncalls_2019 }} </td>
+            <td> {{ procent_ncalls_2020 }} </td>
+            <td> {{ procent_ncalls_2021 }} </td>
+        </tr>
+
+    </table>
+    <br>
+    <br>
+    <table bgcolor ="0A135D" align="center" border="2" cellspacing=1 cellpadding=1>
+        <tr style="text-align: center; font-size: 11px;" >
+            <td  width= 60 rowspan="2">QSO in month</td>
+            <td  height="23" width="100">Jan</td>
+            <td  width="100">Feb</td>
+            <td  width="100">Mar</td>
+            <td  width="100">Apr</td>
+            <td  width="100">May</td>
+            <td  width="100">Jun</td>
+            <td  width="100">Jul</td>
+            <td  width="100">Aug</td>
+            <td  width="100">Sep</td>
+            <td  width="100">Oct</td>
+            <td  width="100">Nov</td>
+            <td  width="100">Dec</td>
+
+        </tr>
+        <tr style="text-align: center; font-size: 14px">
+
+            <td> {{ dtm1 }} </td>
+            <td> {{ dtm2 }} </td>
+            <td> {{ dtm3 }} </td>
+            <td> {{ dtm4 }} </td>
+            <td> {{ dtm5 }} </td>
+            <td> {{ dtm6 }} </td>
+            <td> {{ dtm7 }} </td>
+            <td> {{ dtm8 }} </td>
+            <td> {{ dtm9 }} </td>
+            <td> {{ dtm10 }} </td>
+            <td> {{ dtm11 }} </td>
+            <td> {{ dtm12 }} </td>
+
+        </tr>
+
+    </table>
+    <br>
+    <br>
+    <table bgcolor ="0A135D" align="center" border="2" cellspacing=1 cellpadding=1>
+        <tr style="text-align: center; font-size: 11px">
+            <td  width="100" rowspan="2">QSO in hour</td>
+            <td height="23"  width="100" >0 msk</td>
+            <td  width="100" >1</td>
+            <td  width="100" >2</td>
+            <td  width="100" >3</td>
+            <td  width="100" >4</td>
+            <td  width="100" >5</td>
+            <td  width="100" >6</td>
+            <td  width="100" >7</td>
+            <td  width="100" >8</td>
+            <td  width="100" >9</td>
+            <td  width="100" >10</td>
+            <td  width="100" >11</td>
+            <td  width="100" >12</td>
+            <td  width="100" >13</td>
+            <td  width="100" >14</td>
+            <td  width="100" >15</td>
+            <td  width="100" >16</td>
+            <td  width="100" >17</td>
+            <td  width="100" >18</td>
+            <td  width="100" >19</td>
+            <td  width="100" >20</td>
+            <td  width="100" >21</td>
+            <td  width="100" >22</td>
+            <td  width="100" >23</td>
+
+
+
+        </tr>
+        <tr style="text-align: center; font-size: 14px">
+
+            <td height="23" width="100"> {{ dtt21 }}</td>
+            <td> {{ dtt22 }} </td>
+            <td> {{ dtt23 }} </td>
+            <td> {{ dtt0 }} </td>
+            <td> {{ dtt1 }} </td>
+            <td> {{ dtt2 }} </td>
+            <td> {{ dtt3 }} </td>
+            <td> {{ dtt4 }} </td>
+            <td> {{ dtt5 }} </td>
+            <td> {{ dtt6 }} </td>
+            <td> {{ dtt7 }} </td>
+            <td> {{ dtt8 }} </td>
+            <td> {{ dtt9 }} </td>
+            <td> {{ dtt10 }} </td>
+            <td> {{ dtt11 }} </td>
+            <td> {{ dtt12 }} </td>
+            <td> {{ dtt13 }} </td>
+            <td> {{ dtt14 }} </td>
+            <td> {{ dtt15 }} </td>
+            <td> {{ dtt16 }} </td>
+            <td> {{ dtt17 }} </td>
+            <td> {{ dtt18 }} </td>
+            <td> {{ dtt19 }} </td>
+            <td> {{ dtt20 }} </td>
+
+        </tr>
+
+    </table>
+    <br>
+    <br>
+    <br>
+    <p><div style="text-align: center;">{{ date_hour|date:'r' }} (MSK) {{ tt }} sec </div>
+
+
+    </html>
+
+{% endblock %}

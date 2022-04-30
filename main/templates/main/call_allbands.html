@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends "main/base.html" %}
+
+{% block title %}ra3fd log{% endblock %}
+
+
+
+{% block content %}
+    <html>
+    <head>
+        <style type="text/css">
+
+        </style>
+
+    </head>
+
+    <br>
+    <div  title="160,80,40,20,15,10" style="text-align: center;"><big><i>QSO all bands ({{ len_call_allbands }}):</i></big></div>
+    <p><div style="text-align: left;">
+
+
+        {% for item in call_allbands %}
+            {{ item }}
+        {% endfor %}
+
+    </div>
+
+
+
+
+    <p><div style="text-align: center;">{{ date_max|date:'r' }} (MSK) {{ tt }} sec </div>
+
+
+    </html>
+
+{% endblock %}

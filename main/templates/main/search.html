@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% extends "main/base.html" %}
+
+{% block title %}ra3fd log{% endblock %}
+
+
+
+{% block content %}
+    <html>
+    <head>
+        <style type="text/css">
+
+        </style>
+
+    </head>
+
+    <br>
+
+    <div style="text-align: center;"><form action="/search/" method="get">
+
+        <label>
+            <input type="text" style="background: #7efff2;" name="q" value ="{{ data|upper }}" size="20" maxlength="17" >
+        </label>
+
+        <input type='hidden' style="background: #151ccd;" value=""></form>
+
+    </div>
+        <div style="text-align: center">
+
+            <br>
+            <span style="font-size: 125%x"><big>{{ prefix|default:'prefix' }}-{{ cname|default:'country' }} {{ cont }}</big></span>
+
+        </div>
+    <br>
+
+    <div style="text-align: center;" >
+
+        Total <span style="font-weight: bold;">{{ qso }}</span> {{ qso_qsos|default:'0 QSO' }}
+    </div>
+
+<br>
+    <table bgcolor ="0A135D" align="center" border="2" cellspacing=1 cellpadding=1>
+        <tr>
+            <td height="23" width="45" style="text-align: center; font-size: 11px"><a href="http://www.srware.net" title=" SRWare Iron ">*</a></td>
+            <td width="45" style="text-align: center; font-size: 11px" title = {{ total_160 }}>160</td>
+            <td width="45" style="text-align: center; font-size: 11px" title = {{ total_80 }} >80</td>
+            <td width="45" style="text-align: center; font-size: 11px" title = {{ total_40 }}>40</td>
+            <td width="45" style="text-align: center; font-size: 11px" title = {{ total_30 }}>30</td>
+            <td width="45" style="text-align: center; font-size: 11px" title = {{ total_20 }}>20</td>
+            <td width="45" style="text-align: center; font-size: 11px" title = {{ total_17 }}>17</td>
+            <td width="45" style="text-align: center; font-size: 11px" title = {{ total_15 }}>15</td>
+            <td width="45" style="text-align: center; font-size: 11px" title = {{ total_12 }}>12</td>
+            <td width="45" style="text-align: center; font-size: 11px" title = {{ total_10 }}>10</td>
+
+        </tr>
+        <tr>
+            <td height = "23" width="45" style="text-align: center; font-size: 11px" title=" {{ total_cw }}">cw</td>
+            <td width="45" style="text-align: center; font-size: 14px ">{{ qso_160cw|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px ">{{ qso_80cw|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px ">{{ qso_40cw|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px ">{{ qso_30cw|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px ">{{ qso_20cw|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px ">{{ qso_17cw|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px ">{{ qso_15cw|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px ">{{ qso_12cw|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px ">{{ qso_10cw|default:'' }}</td>
+
+        </tr>
+        <tr>
+            <td height = "23" width ="45" style="text-align: center; font-size: 11px" title=" {{ total_ssb }}">ssb</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_160ssb|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_80ssb|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_40ssb|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ ' ' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_20ssb|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_17ssb|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_15ssb|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_12ssb|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_10ssb|default:'' }}</td>
+
+        </tr>
+        <tr>
+            <td height = "23" width ="45" style="text-align: center; font-size: 11px" title=" {{ total_rtty }}">rtty</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_160rtty|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_80rtty|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_40rtty|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_30rtty|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_20rtty|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_17rtty|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_15rtty|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_12rtty|default:'' }}</td>
+            <td width ="45" style="text-align: center; font-size: 14px">{{ qso_10rtty|default:'' }}</td>
+
+        </tr>
+
+        <tr>
+            <td height = "23" width="45" style="text-align: center; font-size: 11px" title=" {{ total_psk }}">psk</td>
+            <td width="45" style="text-align: center; font-size: 14px">{{ qso_160psk|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px">{{ qso_80psk|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px">{{ qso_40psk|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px">{{ qso_30psk|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px">{{ qso_20psk|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px">{{ qso_17psk|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px">{{ qso_15psk|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px">{{ qso_12psk|default:'' }}</td>
+            <td width="45" style="text-align: center; font-size: 14px">{{ qso_10psk|default:'' }}</td>
+
+        </tr>
+
+    </table>
+
+    <br>
+
+    <table align="center">
+
+        {% for entry in q2 %}
+
+            <tr>
+
+                <td><big>{{ entry.callsign }}</big></td>
+                <td>{{ ' ' }}</td>
+                <td>{{ entry.datetime|date:"Y-m-d H:i" }}</td>
+                <td>{{ ' ' }}</td>
+                <td>{{ entry.band }}</td>
+                <td>{{ entry.mode }}</td>
+
+            </tr>
+
+        {% endfor %}
+
+    </table>
+    <p><div style="text-align: center;">{{ t_search|default:'' }}</div>
+
+    </html>
+{% endblock %}

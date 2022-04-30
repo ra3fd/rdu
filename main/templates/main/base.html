@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css" >
+        body {
+
+
+        <!-- отступ сверху -->
+            padding: 0;
+            margin: 0 auto;
+            width: 100%;
+        <!-- ширина занимаемая окном по горизонтали  -->
+            min-height: 10%;
+            position: relative;
+            font: 11pt Verdana, Tahoma, Arial, sans-serif;
+        <!-- размер элементов текста -->
+            line-height: 1.3em;
+
+            color: #efd;
+
+            background-color: #0a104c;
+        <!-- цвет поля  -->
+        overflow: hidden; <!--scrolling hidden-->
+        <!-- наличие прокрутки  -->
+
+        }
+
+        * html body {
+            height:100%;
+
+
+
+        }
+
+        #header {
+            background: #170d7c;
+            padding: 0.3em 1.2em;
+            text-align: center; font-size: 115%;
+
+        }
+        
+
+        #menu {
+            padding: 0.3em 0;
+            text-indent: 20px;
+
+        }
+
+        a {
+            color: #bf8;
+            margin: 0 3px;
+        }
+
+    </style>
+    <title>ra3fd log</title>
+
+</head>
+<body>
+<div id="header">
+    <h1><span style="font-style: italic; font-size: 150%"><a href="/">www.ra3fd.com</a></span></h1>
+</div>
+<br>
+<div id="header">
+
+    <a href="/statistics/">statistics</a>
+
+    <a href="/search/">search</a>
+    <a href="/new_calls/">new</a>
+    <!-- <a href="/max_qso/">max</a> -->
+    <a href="/call_allbands/">allbands</a>
+    <a href="/call_allmode/">allmode</a>
+    <a href="/call_allbands_mode/">allbands / allmode</a>
+    <a href="/qso_period/">period</a>
+    <a href="/qsls/">QSLs</a>
+    <!--<a href="/my_image/"> my_image</a>-->
+    <!-- <a href="/solar/"> solar</a> -->
+    <a href="/random/">random</a>
+    <!-- <a href="/tv/">tv</a> -->
+
+</div>
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

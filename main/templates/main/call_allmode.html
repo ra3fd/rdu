@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends "main/base.html" %}
+
+{% block title %}ra3fd log{% endblock %}
+
+
+
+{% block content %}
+    <html>
+    <head>
+        <style type="text/css">
+
+        </style>
+
+    </head>
+
+    <br>
+    <div  title="CW,SSB,RTTY,PSK" style="text-align: center;"><big><i>QSO all mode ({{ len_call_allmode }}):</i></big></div>
+    <p><div style="text-align: left;">
+
+
+        {% for item in call_allmode %}
+            {{ item }}
+        {% endfor %}
+
+    </div>
+
+
+
+
+    <p><div style="text-align: center;">{{ date_max|date:'r' }} (MSK) {{ tt }} sec </div>
+
+
+    </html>
+
+{% endblock %}

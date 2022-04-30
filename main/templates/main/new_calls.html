@@ -1,0 +1,43 @@
+{% extends "main/base.html" %}
+
+{% block title %}ra3fd log{% endblock %}
+
+{% block content %}
+    <html>
+    <head>
+        <style type="text/css">
+
+        </style>
+
+    </head>
+
+    <br>
+
+    <div style="text-align: center;"><big><i>New calls(250):</i></big></div>
+<br>
+{% for entry in q_zz %}
+            <i>({{ entry.datetime|date:"Y-M-d" }})</i>
+{% endfor %}
+<br>
+<br>
+    <div style="text-align: left">
+
+        {% for item in logorder_one %}
+            {{ item }}
+        {% endfor %}
+
+
+        </div>
+<br>
+{% for entry in q_z %}
+
+          <i>({{ entry.datetime|date:"Y-M-d" }})</i>
+
+{% endfor %}
+
+    <p><div style="text-align: center;">{{ date_new|date:'r' }} (MSK) {{ tt }} sec </div>
+
+
+    </html>
+
+{% endblock %}

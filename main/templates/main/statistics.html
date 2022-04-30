@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% extends "main/base.html" %}
+
+{% block title %}ra3fd log{% endblock %}
+
+
+{% block content %}
+    <html>
+    <head>
+        <style type="text/css">
+
+        </style>
+
+    </head>
+
+    <br>
+
+    <div style="text-align: center;">
+
+        Total <span><big>{{ all_count }}</big> QSOs (<z title= {{ diff_calls_all_procent|default:'' }}>{{ diff_calls_all }}</z> unique calls)
+        <p>start {{ log_start|date:"Y-M-d" }}</p>
+        <p>update {{ log_update|date:"Y-M-d" }}</p></span>
+
+
+    </div>
+
+
+    <table bgcolor ="0A135D" align="center" border="2" cellspacing=1 cellpadding=1>
+        <tr style="text-align: center; font-size: 11px" >
+            <td height="23" width="100" style="text-align: center; font-size: 11px"><a href="http://www.srware.net" title=" SRWare Iron ">{{ coincidence|default:'' }}</a></td>
+            <td  width="100">160</td>
+            <td  width="100" >80</td>
+            <td  width="100">40</td>
+            <td  width="100">30</td>
+            <td  width="100">20</td>
+            <td  width="100">17</td>
+            <td  width="100">15</td>
+            <td  width="100">12</td>
+            <td  width="100">10</td>
+            <td  width="100"><big>Sum</big></td>
+            <td  width="100">%</td>
+
+        </tr>
+        <tr style="text-align: center; font-size: 14px">
+            <td height="23" style="font-size: 11px">cw</td>
+            <td title=" total (unique) {{ procent_title_160cw }}%">{{ qso_160cw|default:'' }} ({{ len_160cw_diff }})</td>
+            <td title="{{ procent_title_80cw }}%">{{ qso_80cw|default:'' }} ({{ len_80cw_diff }})</td>
+            <td title="{{ procent_title_40cw }}%">{{ qso_40cw|default:'' }} ({{ len_40cw_diff }})</td>
+            <td title="{{ procent_title_30cw }}%">{{ qso_30cw|default:'' }} ({{ len_30cw_diff }})</td>
+            <td title="{{ procent_title_20cw }}%">{{ qso_20cw|default:'' }} ({{ len_20cw_diff }})</td>
+            <td title="{{ procent_title_17cw }}%">{{ qso_17cw|default:'' }} ({{ len_17cw_diff }})</td>
+            <td title="{{ procent_title_15cw }}%">{{ qso_15cw|default:'' }} ({{ len_15cw_diff }})</td>
+            <td title="{{ procent_title_12cw }}%">{{ qso_12cw|default:'' }} ({{ len_12cw_diff }})</td>
+            <td title="{{ procent_title_10cw }}%">{{ qso_10cw|default:'' }} ({{ len_10cw_diff }})</td>
+            <td title="{{ procent_title_sum_cw }}%">{{ total_cws }} ({{ len_diff_cws }})</td>
+            <td style="font-size: 14px ">{{ total_cw }}</td>
+        </tr>
+        <tr  style="text-align: center; font-size: 14px" >
+            <td  height="23" style="font-size: 11px">ssb</td>
+            <td  title="{{ procent_title_160ssb }}%">{{ qso_160ssb|default:'' }} ({{ len_160ssb_diff }})</td>
+            <td  title="{{ procent_title_80ssb }}%">{{ qso_80ssb|default:'' }} ({{ len_80ssb_diff }})</td>
+            <td  title="{{ procent_title_40ssb }}%">{{ qso_40ssb|default:'' }} ({{ len_40ssb_diff }})</td>
+            <td >{{ ' ' }}</td>
+            <td  title="{{ procent_title_20ssb }}%">{{ qso_20ssb|default:'' }} ({{ len_20ssb_diff }})</td>
+            <td  title="{{ procent_title_17ssb }}%">{{ qso_17ssb|default:'' }} ({{ len_17ssb_diff }})</td>
+            <td  title="{{ procent_title_15ssb }}%">{{ qso_15ssb|default:'' }} ({{ len_15ssb_diff }})</td>
+            <td  title="{{ procent_title_12ssb }}%">{{ qso_12ssb|default:'' }} ({{ len_12ssb_diff }})</td>
+            <td  title="{{ procent_title_10ssb }}%">{{ qso_10ssb|default:'' }} ({{ len_10ssb_diff }})</td>
+            <td  title="{{ procent_title_sum_ssb }}%">{{ total_ssbs }} ({{ len_diff_ssbs }})</td>
+            <td style="font-size: 14px ">{{ total_ssb }}</td>
+        </tr>
+        <tr style="text-align: center; font-size: 14px">
+            <td  height="23" style="text-align: center; font-size: 11px" >rtty</td>
+            <td  width="55"  title="{{ procent_title_160rtty }}%">{{ qso_160rtty|default:'' }} ({{ len_160rtty_diff }})</td>
+            <td  title="{{ procent_title_80rtty }}%">{{ qso_80rtty|default:'' }} ({{ len_80rtty_diff }})</td>
+            <td  title="{{ procent_title_40rtty }}%">{{ qso_40rtty|default:'' }} ({{ len_40rtty_diff }})</td>
+            <td  title="{{ procent_title_30rtty }}%">{{ qso_30rtty|default:'' }} ({{ len_30rtty_diff }})</td>
+            <td  title="{{ procent_title_20rtty }}%">{{ qso_20rtty|default:'' }} ({{ len_20rtty_diff }})</td>
+            <td  title="{{ procent_title_17rtty }}%">{{ qso_17rtty|default:'' }} ({{ len_17rtty_diff }})</td>
+            <td  title="{{ procent_title_15rtty }}%">{{ qso_15rtty|default:'' }} ({{ len_15rtty_diff }})</td>
+            <td  title="{{ procent_title_12rtty }}%">{{ qso_12rtty|default:'' }} ({{ len_12rtty_diff }})</td>
+            <td  title="{{ procent_title_10rtty }}%">{{ qso_10rtty|default:'' }} ({{ len_10rtty_diff }})</td>
+            <td  title="{{ procent_title_sum_rtty }}%">{{ total_rttys }} ({{ len_diff_rttys }})</td>
+            <td style="text-align: center; font-size: 14px ">{{ total_rtty }}</td>
+        </tr>
+
+        <tr style="text-align: center; font-size: 14px">
+            <td  height="23" style="text-align: center; font-size: 11px">psk</td>
+            <td  width="55"  title="{{ procent_title_160psk }}%">{{ qso_160psk|default:'' }} ({{ len_160psk_diff }})</td>
+            <td  title="{{ procent_title_80psk }}%">{{ qso_80psk|default:'' }} ({{ len_80psk_diff }})</td>
+            <td  title="{{ procent_title_40psk }}%">{{ qso_40psk|default:'' }} ({{ len_40psk_diff }})</td>
+            <td  title="{{ procent_title_30psk }}%">{{ qso_30psk|default:'' }} ({{ len_30psk_diff }})</td>
+            <td  title="{{ procent_title_20psk }}%">{{ qso_20psk|default:'' }} ({{ len_20psk_diff }})</td>
+            <td  title="{{ procent_title_17psk }}">{{ qso_17psk|default:'' }} ({{ len_17psk_diff }})</td>
+            <td  title="{{ procent_title_15psk }}%">{{ qso_15psk|default:'' }} ({{ len_15psk_diff }})</td>
+            <td  title="{{ procent_title_12psk }}">{{ qso_12psk|default:'' }} ({{ len_12psk_diff }})</td>
+            <td  title="{{ procent_title_10psk }}%">{{ qso_10psk|default:'' }} ({{ len_10psk_diff }})</td>
+            <td  title="{{ procent_title_sum_psk }}%">{{ total_psks }} ({{ len_diff_psks }})</td>
+            <td style="text-align: center; font-size: 14px ">{{ total_psk }}</td>
+
+        </tr>
+
+        <tr style="text-align: center; font-size: 14px">
+                    <td  height="23" style="font-size: 11px"><big>Sum</big></td>
+            <td  title="{{ procent_title_sum160 }}%">{{ total_160S|default:'' }} ({{ len_160_diff }})</td>
+            <td  title="{{ procent_title_sum80 }}%">{{ total_80S|default:'' }} ({{ len_80_diff }})</td>
+            <td  title="{{ procent_title_sum40 }}%">{{ total_40S|default:'' }} ({{ len_40_diff }})</td>
+            <td  title="{{ procent_title_sum30 }}%">{{ total_30S|default:'' }} ({{ len_30_diff }})</td>
+            <td  title="{{ procent_title_sum20 }}%">{{ total_20S|default:'' }} ({{ len_20_diff }})</td>
+            <td  title="{{ procent_title_sum17 }}%">{{ total_17S|default:'' }} ({{ len_17_diff }})</td>
+            <td  title="{{ procent_title_sum15 }}%">{{ total_15S|default:'' }} ({{ len_15_diff }})</td>
+            <td  title="{{ procent_title_sum12 }}%">{{ total_12S|default:'' }} ({{ len_12_diff }})</td>
+            <td  title="{{ procent_title_sum10 }}%">{{ total_10S|default:'' }} ({{ len_10_diff }})</td>
+            <td  title="{{ diff_calls_all_procent }}"><big>{{ all_count }}</big> ({{ diff_calls_all }})</td>
+
+        </tr>
+        <tr style="text-align: center; font-size: 14px">
+
+            <td  height="23" style="font-size: 11px">%</td>
+            <td >{{ total_160|default:'' }}</td>
+            <td >{{ total_80|default:'' }}</td>
+            <td >{{ total_40|default:'' }}</td>
+            <td >{{ total_30|default:'' }}</td>
+            <td >{{ total_20|default:'' }}</td>
+            <td >{{ total_17|default:'' }}</td>
+            <td >{{ total_15|default:'' }}</td>
+            <td >{{ total_12|default:'' }}</td>
+            <td >{{ total_10|default:'' }}</td>
+
+        </tr>
+
+
+    </table>
+
+    <p><div style="text-align: center;">{{ date_stat|date:'r' }} (MSK) {{ tt }} sec </div>
+
+
+    </html>
+
+{% endblock %}
