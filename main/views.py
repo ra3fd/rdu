@@ -2033,6 +2033,8 @@ def call_allmode(request):
     call_onssb = []
     call_onrtty = []
     call_onpsk = []
+    call_onft4 = []
+    call_onft8 = []
     call_allmode = []
 
     q_diff = Entry.objects.all()  # Список QSO
@@ -2057,8 +2059,18 @@ def call_allmode(request):
         if entry.callsign not in call_onpsk:
             call_onpsk.append(entry.callsign)
 
+    cl_ft4 = q_diff.filter(mode__iregex=r'MFSK')
+    for entry in cl_ft4:
+        if entry.callsign not in call_onft4:
+            call_onft4.append(entry.callsign)
+
+    cl_ft8 = q_diff.filter(mode__iregex=r'FT8')
+    for entry in cl_ft8:
+        if entry.callsign not in call_onft8:
+            call_onft8.append(entry.callsign)
+
     for item in call_onpsk:
-        if item in call_oncw and item in call_onssb and item in call_onrtty:
+        if item in call_oncw and item in call_onssb and item in call_onrtty and item in call_onft4 and item in call_onft8:
             call_allmode.append(item)
     call_allmode.sort()
     len_call_allmode = len(call_allmode)

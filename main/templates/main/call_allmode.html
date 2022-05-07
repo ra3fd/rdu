@@ -15,12 +15,12 @@
     </head>
 
     <br>
-    <div  title="CW,SSB,RTTY,PSK" style="text-align: center;"><big><i>QSO all mode ({{ len_call_allmode }}):</i></big></div>
+    <div  title="CW,SSB,RTTY,PSK, FT4, FT8" style="text-align: center;"><big><i>QSO all mode ({{ len_call_allmode }}):</i></big></div>
     <p><div style="text-align: left;">
 
 
         {% for item in call_allmode %}
-            {{ item }}
+            <center>{{ item }}</center>
         {% endfor %}
 
     </div>
