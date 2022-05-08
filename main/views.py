@@ -37,8 +37,6 @@ def search(request):
     qssb = Entry.objects.filter(mode='SSB')
     qrtty = Entry.objects.filter(mode='RTTY')
     qpsk = Entry.objects.filter(mode='PSK')
-    #qpsk63 = Entry.objects.filter(mode='PSK6')
-    #qpsk125 = Entry.objects.filter(mode='PK12')
     qft4 = Entry.objects.filter(mode='FT4')
     qft8 = Entry.objects.filter(mode='FT8')
 
@@ -674,7 +672,7 @@ def statistics(request):
                 call_160rtty.append('1')
                 if entry.callsign not in diff_calls_160rtty:
                     diff_calls_160rtty.append(entry.callsign)
-            elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PK12':
+            elif entry.mode == 'PSK':
                 call_160psk.append('1')
                 if entry.callsign not in diff_calls_160psk:
                     diff_calls_160psk.append(entry.callsign)
@@ -703,7 +701,7 @@ def statistics(request):
                 call_80rtty.append('1')
                 if entry.callsign not in diff_calls_80rtty:
                     diff_calls_80rtty.append(entry.callsign)
-            elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PK12':
+            elif entry.mode == 'PSK':
                 call_80psk.append('1')
                 if entry.callsign not in diff_calls_80psk:
                     diff_calls_80psk.append(entry.callsign)
@@ -732,7 +730,7 @@ def statistics(request):
                 call_40rtty.append('1')
                 if entry.callsign not in diff_calls_40rtty:
                     diff_calls_40rtty.append(entry.callsign)
-            elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PK12':
+            elif entry.mode == 'PSK':
                 call_40psk.append('1')
                 if entry.callsign not in diff_calls_40psk:
                     diff_calls_40psk.append(entry.callsign)
@@ -757,7 +755,7 @@ def statistics(request):
                 call_30rtty.append('1')
                 if entry.callsign not in diff_calls_30rtty:
                     diff_calls_30rtty.append(entry.callsign)
-            elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PSK12':
+            elif entry.mode == 'PSK':
                 call_30psk.append('1')
                 if entry.callsign not in diff_calls_30psk:
                     diff_calls_30psk.append(entry.callsign)
@@ -786,7 +784,7 @@ def statistics(request):
                 call_20rtty.append('1')
                 if entry.callsign not in diff_calls_20rtty:
                     diff_calls_20rtty.append(entry.callsign)
-            elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PK12':
+            elif entry.mode == 'PSK':
                 call_20psk.append('1')
                 if entry.callsign not in diff_calls_20psk:
                     diff_calls_20psk.append(entry.callsign)
@@ -815,7 +813,7 @@ def statistics(request):
                 call_17rtty.append('1')
                 if entry.callsign not in diff_calls_17rtty:
                     diff_calls_17rtty.append(entry.callsign)
-            elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PK12':
+            elif entry.mode == 'PSK':
                 call_17psk.append('1')
                 if entry.callsign not in diff_calls_17psk:
                     diff_calls_17psk.append(entry.callsign)
@@ -844,7 +842,7 @@ def statistics(request):
                 call_15rtty.append('1')
                 if entry.callsign not in diff_calls_15rtty:
                     diff_calls_15rtty.append(entry.callsign)
-            elif entry.mode == 'PSK':  # or entry.mode == 'PSK6' or entry.mode == 'PK12':
+            elif entry.mode == 'PSK':
                 call_15psk.append('1')
                 if entry.callsign not in diff_calls_15psk:
                     diff_calls_15psk.append(entry.callsign)
@@ -873,7 +871,7 @@ def statistics(request):
                 call_12rtty.append('1')
                 if entry.callsign not in diff_calls_12rtty:
                     diff_calls_12rtty.append(entry.callsign)
-            elif entry.mode == 'PSK':  # or entry.mode == 'PSK6' or entry.mode == 'PSK12':
+            elif entry.mode == 'PSK':
                 call_12psk.append('1')
                 if entry.callsign not in diff_calls_12psk:
                     diff_calls_12psk.append(entry.callsign)
@@ -902,7 +900,7 @@ def statistics(request):
                 call_10rtty.append('1')
                 if entry.callsign not in diff_calls_10rtty:
                     diff_calls_10rtty.append(entry.callsign)
-            elif entry.mode == 'PSK':  # or entry.mode == 'PSK6' or entry.mode == 'PSK12':
+            elif entry.mode == 'PSK':
                 call_10psk.append('1')
                 if entry.callsign not in diff_calls_10psk:
                     diff_calls_10psk.append(entry.callsign)
@@ -932,16 +930,16 @@ def statistics(request):
             if entry.callsign not in diff_rttys:
                 diff_rttys.append(entry.callsign)
 
-        elif entry.mode == 'PSK':  # or entry.mode == 'PSK6' or entry.mode == 'PK12':
+        elif entry.mode == 'PSK':
             qpsk.append('1')
             if entry.callsign not in diff_psks:
                 diff_psks.append(entry.callsign)
-                
+
         elif entry.mode == 'FT4':
             qft4.append('1')
             if entry.callsign not in diff_ft4s:
                 diff_ft4s.append(entry.callsign)
-                
+
         elif entry.mode == 'FT8':
             qft8.append('1')
             if entry.callsign not in diff_ft8s:
@@ -1057,7 +1055,7 @@ def statistics(request):
     qso_15psk = len(call_15psk)
     qso_12psk = len(call_12psk)
     qso_10psk = len(call_10psk)
-    
+
     qso_160ft4 = len(call_160ft4)
     qso_80ft4 = len(call_80ft4)
     qso_40ft4 = len(call_40ft4)
@@ -1067,7 +1065,7 @@ def statistics(request):
     qso_15ft4 = len(call_15ft4)
     qso_12ft4 = len(call_12ft4)
     qso_10ft4 = len(call_10ft4)
-    
+
     qso_160ft8 = len(call_160ft8)
     qso_80ft8 = len(call_80ft8)
     qso_40ft8 = len(call_40ft8)
@@ -1295,7 +1293,13 @@ def statistics(request):
 
     coincidence = '**'
 
-    if qso_160cw + qso_80cw + qso_40cw + qso_30cw + qso_20cw + qso_17cw + qso_15cw + qso_12cw + qso_10cw + qso_160ssb + qso_80ssb + qso_40ssb + qso_20ssb + qso_17ssb + qso_15ssb + qso_12ssb + qso_10ssb + qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty + qso_12rtty + qso_10rtty + qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk + qso_12psk + qso_10psk == all_count:
+    if qso_160cw + qso_80cw + qso_40cw + qso_30cw + qso_20cw + qso_17cw + qso_15cw + qso_12cw + qso_10cw + \
+            qso_160ssb + qso_80ssb + qso_40ssb + qso_20ssb + qso_17ssb + qso_15ssb + qso_12ssb + qso_10ssb + \
+            qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty + qso_12rtty + qso_10rtty + \
+            qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk + qso_12psk + qso_10psk + \
+            qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 + qso_15ft4 + qso_12ft4 + qso_10ft4 + \
+            qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 + qso_17ft8 + qso_15ft8 + qso_12ft8 + qso_10ft8 == all_count:
+
         coincidence = '*'
 
         # Что вверху - заполнение таблицы 123 - 311 строчки
@@ -1683,8 +1687,6 @@ def rand(request):
     qssb = Entry.objects.filter(mode='SSB')
     qrtty = Entry.objects.filter(mode='RTTY')
     qpsk = Entry.objects.filter(mode='PSK')
-    #qpsk63 = Entry.objects.filter(mode='PSK6')
-    #qpsk125 = Entry.objects.filter(mode='PK12')
 
     data = random_
 
