@@ -674,7 +674,7 @@ def statistics(request):
                 call_160rtty.append('1')
                 if entry.callsign not in diff_calls_160rtty:
                     diff_calls_160rtty.append(entry.callsign)
-            elif entry.mode == 'PSK3': # or entry.mode == 'PSK6' or entry.mode == 'PK12':
+            elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PK12':
                 call_160psk.append('1')
                 if entry.callsign not in diff_calls_160psk:
                     diff_calls_160psk.append(entry.callsign)
@@ -844,7 +844,7 @@ def statistics(request):
                 call_15rtty.append('1')
                 if entry.callsign not in diff_calls_15rtty:
                     diff_calls_15rtty.append(entry.callsign)
-            elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PK12':
+            elif entry.mode == 'PSK':  # or entry.mode == 'PSK6' or entry.mode == 'PK12':
                 call_15psk.append('1')
                 if entry.callsign not in diff_calls_15psk:
                     diff_calls_15psk.append(entry.callsign)
@@ -873,7 +873,7 @@ def statistics(request):
                 call_12rtty.append('1')
                 if entry.callsign not in diff_calls_12rtty:
                     diff_calls_12rtty.append(entry.callsign)
-            elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PSK12':
+            elif entry.mode == 'PSK':  # or entry.mode == 'PSK6' or entry.mode == 'PSK12':
                 call_12psk.append('1')
                 if entry.callsign not in diff_calls_12psk:
                     diff_calls_12psk.append(entry.callsign)
@@ -902,7 +902,7 @@ def statistics(request):
                 call_10rtty.append('1')
                 if entry.callsign not in diff_calls_10rtty:
                     diff_calls_10rtty.append(entry.callsign)
-            elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PSK12':
+            elif entry.mode == 'PSK':  # or entry.mode == 'PSK6' or entry.mode == 'PSK12':
                 call_10psk.append('1')
                 if entry.callsign not in diff_calls_10psk:
                     diff_calls_10psk.append(entry.callsign)
@@ -932,7 +932,7 @@ def statistics(request):
             if entry.callsign not in diff_rttys:
                 diff_rttys.append(entry.callsign)
 
-        elif entry.mode == 'PSK': # or entry.mode == 'PSK6' or entry.mode == 'PK12':
+        elif entry.mode == 'PSK':  # or entry.mode == 'PSK6' or entry.mode == 'PK12':
             qpsk.append('1')
             if entry.callsign not in diff_psks:
                 diff_psks.append(entry.callsign)
