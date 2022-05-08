@@ -39,7 +39,7 @@ def search(request):
     qpsk = Entry.objects.filter(mode='PSK')
     #qpsk63 = Entry.objects.filter(mode='PSK6')
     #qpsk125 = Entry.objects.filter(mode='PK12')
-    qft4 = Entry.objects.filter(mode='MFSK')
+    qft4 = Entry.objects.filter(mode='FT4')
     qft8 = Entry.objects.filter(mode='FT8')
 
 
@@ -77,7 +77,7 @@ def search(request):
                     qso_160ssb = q_160.filter(mode='SSB').count()
                     qso_160rtty = q_160.filter(mode='RTTY').count()
                     qso_160psk = q_160.filter(mode=r'PSK').count()
-                    qso_160ft4 = q_160.filter(mode=r'MFSK').count()
+                    qso_160ft4 = q_160.filter(mode=r'FT4').count()
                     qso_160ft8 = q_160.filter(mode=r'FT8').count()
 
                 q_80 = q1.filter(band='4')
@@ -86,7 +86,7 @@ def search(request):
                     qso_80ssb = q_80.filter(mode='SSB').count()
                     qso_80rtty = q_80.filter(mode='RTTY').count()
                     qso_80psk = q_80.filter(mode=r'PSK').count()
-                    qso_80ft4 = q_80.filter(mode=r'MFSK').count()
+                    qso_80ft4 = q_80.filter(mode=r'FT4').count()
                     qso_80ft8 = q_80.filter(mode=r'FT8').count()
 
                 q_40 = q1.filter(band='7')
@@ -95,7 +95,7 @@ def search(request):
                     qso_40ssb = q_40.filter(mode='SSB').count()
                     qso_40rtty = q_40.filter(mode='RTTY').count()
                     qso_40psk = q_40.filter(mode=r'PSK').count()
-                    qso_40ft4 = q_40.filter(mode=r'MFSK').count()
+                    qso_40ft4 = q_40.filter(mode=r'FT4').count()
                     qso_40ft8 = q_40.filter(mode=r'FT8').count()
 
                 q_30 = q1.filter(band='10')
@@ -103,7 +103,7 @@ def search(request):
                     qso_30cw = q_30.filter(mode='CW').count()
                     qso_30rtty = q_30.filter(mode='RTTY').count()
                     qso_30psk = q_30.filter(mode=r'PSK').count()
-                    qso_30ft4 = q_30.filter(mode=r'MFSK').count()
+                    qso_30ft4 = q_30.filter(mode=r'FT4').count()
                     qso_30ft8 = q_30.filter(mode=r'FT8').count()
 
                 q_20 = q1.filter(band='14')
@@ -112,7 +112,7 @@ def search(request):
                     qso_20ssb = q_20.filter(mode='SSB').count()
                     qso_20rtty = q_20.filter(mode='RTTY').count()
                     qso_20psk = q_20.filter(mode=r'PSK').count()
-                    qso_20ft4 = q_20.filter(mode=r'MFSK').count()
+                    qso_20ft4 = q_20.filter(mode=r'FT4').count()
                     qso_20ft8 = q_20.filter(mode=r'FT8').count()
 
                 q_17 = q1.filter(band='18')
@@ -121,7 +121,7 @@ def search(request):
                     qso_17ssb = q_17.filter(mode='SSB').count()
                     qso_17rtty = q_17.filter(mode='RTTY').count()
                     qso_17psk = q_17.filter(mode=r'PSK').count()
-                    qso_17ft4 = q_17.filter(mode=r'MFSK').count()
+                    qso_17ft4 = q_17.filter(mode=r'FT4').count()
                     qso_17ft8 = q_17.filter(mode=r'FT8').count()
 
                 q_15 = q1.filter(band='21')
@@ -130,7 +130,7 @@ def search(request):
                     qso_15ssb = q_15.filter(mode='SSB').count()
                     qso_15rtty = q_15.filter(mode='RTTY').count()
                     qso_15psk = q_15.filter(mode=r'PSK').count()
-                    qso_15ft4 = q_15.filter(mode=r'MFSK').count()
+                    qso_15ft4 = q_15.filter(mode=r'FT4').count()
                     qso_15ft8 = q_15.filter(mode=r'FT8').count()
 
                 q_12 = q1.filter(band='25')
@@ -139,7 +139,7 @@ def search(request):
                     qso_12ssb = q_12.filter(mode='SSB').count()
                     qso_12rtty = q_12.filter(mode='RTTY').count()
                     qso_12psk = q_12.filter(mode=r'PSK').count()
-                    qso_12ft4 = q_12.filter(mode=r'MFSK').count()
+                    qso_12ft4 = q_12.filter(mode=r'FT4').count()
                     qso_12ft8 = q_12.filter(mode=r'FT8').count()
 
                 q_10 = q1.filter(band='28')
@@ -148,7 +148,7 @@ def search(request):
                     qso_10ssb = q_10.filter(mode='SSB').count()
                     qso_10rtty = q_10.filter(mode='RTTY').count()
                     qso_10psk = q_10.filter(mode=r'PSK').count()
-                    qso_10ft4 = q_10.filter(mode=r'MFSK').count()
+                    qso_10ft4 = q_10.filter(mode=r'FT4').count()
                     qso_10ft8 = q_10.filter(mode=r'FT8').count()
 
                 total_160 = qso_160cw + qso_160ssb + qso_160rtty + qso_160psk + qso_160ft4 + qso_160ft8
@@ -678,7 +678,7 @@ def statistics(request):
                 call_160psk.append('1')
                 if entry.callsign not in diff_calls_160psk:
                     diff_calls_160psk.append(entry.callsign)
-            elif entry.mode == 'MFSK':
+            elif entry.mode == 'FT4':
                 call_160ft4.append('1')
                 if entry.callsign not in diff_calls_160ft4:
                     diff_calls_160ft4.append(entry.callsign)
@@ -707,7 +707,7 @@ def statistics(request):
                 call_80psk.append('1')
                 if entry.callsign not in diff_calls_80psk:
                     diff_calls_80psk.append(entry.callsign)
-            elif entry.mode == 'MFSK':
+            elif entry.mode == 'FT4':
                 call_80ft4.append('1')
                 if entry.callsign not in diff_calls_80ft4:
                     diff_calls_80ft4.append(entry.callsign)
@@ -736,7 +736,7 @@ def statistics(request):
                 call_40psk.append('1')
                 if entry.callsign not in diff_calls_40psk:
                     diff_calls_40psk.append(entry.callsign)
-            elif entry.mode == 'MFSK':
+            elif entry.mode == 'FT4':
                 call_40ft4.append('1')
                 if entry.callsign not in diff_calls_40ft4:
                     diff_calls_40ft4.append(entry.callsign)
@@ -761,7 +761,7 @@ def statistics(request):
                 call_30psk.append('1')
                 if entry.callsign not in diff_calls_30psk:
                     diff_calls_30psk.append(entry.callsign)
-            elif entry.mode == 'MFSK':
+            elif entry.mode == 'FT4':
                 call_30ft4.append('1')
                 if entry.callsign not in diff_calls_30ft4:
                     diff_calls_30ft4.append(entry.callsign)
@@ -790,7 +790,7 @@ def statistics(request):
                 call_20psk.append('1')
                 if entry.callsign not in diff_calls_20psk:
                     diff_calls_20psk.append(entry.callsign)
-            elif entry.mode == 'MFSK':
+            elif entry.mode == 'FT4':
                 call_20ft4.append('1')
                 if entry.callsign not in diff_calls_20ft4:
                     diff_calls_20ft4.append(entry.callsign)
@@ -819,7 +819,7 @@ def statistics(request):
                 call_17psk.append('1')
                 if entry.callsign not in diff_calls_17psk:
                     diff_calls_17psk.append(entry.callsign)
-            elif entry.mode == 'MFSK':
+            elif entry.mode == 'FT4':
                 call_17ft4.append('1')
                 if entry.callsign not in diff_calls_17ft4:
                     diff_calls_17ft4.append(entry.callsign)
@@ -848,7 +848,7 @@ def statistics(request):
                 call_15psk.append('1')
                 if entry.callsign not in diff_calls_15psk:
                     diff_calls_15psk.append(entry.callsign)
-            elif entry.mode == 'MFSK':
+            elif entry.mode == 'FT4':
                 call_15ft4.append('1')
                 if entry.callsign not in diff_calls_15ft4:
                     diff_calls_15ft4.append(entry.callsign)
@@ -877,7 +877,7 @@ def statistics(request):
                 call_12psk.append('1')
                 if entry.callsign not in diff_calls_12psk:
                     diff_calls_12psk.append(entry.callsign)
-            elif entry.mode == 'MFSK':
+            elif entry.mode == 'FT4':
                 call_12ft4.append('1')
                 if entry.callsign not in diff_calls_12ft4:
                     diff_calls_12ft4.append(entry.callsign)
@@ -906,7 +906,7 @@ def statistics(request):
                 call_10psk.append('1')
                 if entry.callsign not in diff_calls_10psk:
                     diff_calls_10psk.append(entry.callsign)
-            elif entry.mode == 'MFSK':
+            elif entry.mode == 'FT4':
                 call_10ft4.append('1')
                 if entry.callsign not in diff_calls_10ft4:
                     diff_calls_10ft4.append(entry.callsign)
@@ -937,7 +937,7 @@ def statistics(request):
             if entry.callsign not in diff_psks:
                 diff_psks.append(entry.callsign)
                 
-        elif entry.mode == 'MFSK':
+        elif entry.mode == 'FT4':
             qft4.append('1')
             if entry.callsign not in diff_ft4s:
                 diff_ft4s.append(entry.callsign)
@@ -2059,7 +2059,7 @@ def call_allmode(request):
         if entry.callsign not in call_onpsk:
             call_onpsk.append(entry.callsign)
 
-    cl_ft4 = q_diff.filter(mode=r'MFSK')
+    cl_ft4 = q_diff.filter(mode=r'FT4')
     for entry in cl_ft4:
         if entry.callsign not in call_onft4:
             call_onft4.append(entry.callsign)
