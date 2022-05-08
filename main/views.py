@@ -76,80 +76,80 @@ def search(request):
                     qso_160cw = q_160.filter(mode='CW').count()
                     qso_160ssb = q_160.filter(mode='SSB').count()
                     qso_160rtty = q_160.filter(mode='RTTY').count()
-                    qso_160psk = q_160.filter(mode=r'PSK').count()
-                    qso_160ft4 = q_160.filter(mode=r'FT4').count()
-                    qso_160ft8 = q_160.filter(mode=r'FT8').count()
+                    qso_160psk = q_160.filter(mode='PSK').count()
+                    qso_160ft4 = q_160.filter(mode='FT4').count()
+                    qso_160ft8 = q_160.filter(mode='FT8').count()
 
                 q_80 = q1.filter(band='4')
                 if q_80:
                     qso_80cw = q_80.filter(mode='CW').count()
                     qso_80ssb = q_80.filter(mode='SSB').count()
                     qso_80rtty = q_80.filter(mode='RTTY').count()
-                    qso_80psk = q_80.filter(mode=r'PSK').count()
-                    qso_80ft4 = q_80.filter(mode=r'FT4').count()
-                    qso_80ft8 = q_80.filter(mode=r'FT8').count()
+                    qso_80psk = q_80.filter(mode='PSK').count()
+                    qso_80ft4 = q_80.filter(mode='FT4').count()
+                    qso_80ft8 = q_80.filter(mode='FT8').count()
 
                 q_40 = q1.filter(band='7')
                 if q_40:
                     qso_40cw = q_40.filter(mode='CW').count()
                     qso_40ssb = q_40.filter(mode='SSB').count()
                     qso_40rtty = q_40.filter(mode='RTTY').count()
-                    qso_40psk = q_40.filter(mode=r'PSK').count()
-                    qso_40ft4 = q_40.filter(mode=r'FT4').count()
-                    qso_40ft8 = q_40.filter(mode=r'FT8').count()
+                    qso_40psk = q_40.filter(mode='PSK').count()
+                    qso_40ft4 = q_40.filter(mode='FT4').count()
+                    qso_40ft8 = q_40.filter(mode='FT8').count()
 
                 q_30 = q1.filter(band='10')
                 if q_30:
                     qso_30cw = q_30.filter(mode='CW').count()
                     qso_30rtty = q_30.filter(mode='RTTY').count()
-                    qso_30psk = q_30.filter(mode=r'PSK').count()
-                    qso_30ft4 = q_30.filter(mode=r'FT4').count()
-                    qso_30ft8 = q_30.filter(mode=r'FT8').count()
+                    qso_30psk = q_30.filter(mode='PSK').count()
+                    qso_30ft4 = q_30.filter(mode='FT4').count()
+                    qso_30ft8 = q_30.filter(mode='FT8').count()
 
                 q_20 = q1.filter(band='14')
                 if q_20:
                     qso_20cw = q_20.filter(mode='CW').count()
                     qso_20ssb = q_20.filter(mode='SSB').count()
                     qso_20rtty = q_20.filter(mode='RTTY').count()
-                    qso_20psk = q_20.filter(mode=r'PSK').count()
-                    qso_20ft4 = q_20.filter(mode=r'FT4').count()
-                    qso_20ft8 = q_20.filter(mode=r'FT8').count()
+                    qso_20psk = q_20.filter(mode='PSK').count()
+                    qso_20ft4 = q_20.filter(mode='FT4').count()
+                    qso_20ft8 = q_20.filter(mode='FT8').count()
 
                 q_17 = q1.filter(band='18')
                 if q_17:
                     qso_17cw = q_17.filter(mode='CW').count()
                     qso_17ssb = q_17.filter(mode='SSB').count()
                     qso_17rtty = q_17.filter(mode='RTTY').count()
-                    qso_17psk = q_17.filter(mode=r'PSK').count()
-                    qso_17ft4 = q_17.filter(mode=r'FT4').count()
-                    qso_17ft8 = q_17.filter(mode=r'FT8').count()
+                    qso_17psk = q_17.filter(mode='PSK').count()
+                    qso_17ft4 = q_17.filter(mode='FT4').count()
+                    qso_17ft8 = q_17.filter(mode='FT8').count()
 
                 q_15 = q1.filter(band='21')
                 if q_15:
                     qso_15cw = q_15.filter(mode='CW').count()
                     qso_15ssb = q_15.filter(mode='SSB').count()
                     qso_15rtty = q_15.filter(mode='RTTY').count()
-                    qso_15psk = q_15.filter(mode=r'PSK').count()
-                    qso_15ft4 = q_15.filter(mode=r'FT4').count()
-                    qso_15ft8 = q_15.filter(mode=r'FT8').count()
+                    qso_15psk = q_15.filter(mode='PSK').count()
+                    qso_15ft4 = q_15.filter(mode='FT4').count()
+                    qso_15ft8 = q_15.filter(mode='FT8').count()
 
                 q_12 = q1.filter(band='25')
                 if q_12:
                     qso_12cw = q_12.filter(mode='CW').count()
                     qso_12ssb = q_12.filter(mode='SSB').count()
                     qso_12rtty = q_12.filter(mode='RTTY').count()
-                    qso_12psk = q_12.filter(mode=r'PSK').count()
-                    qso_12ft4 = q_12.filter(mode=r'FT4').count()
-                    qso_12ft8 = q_12.filter(mode=r'FT8').count()
+                    qso_12psk = q_12.filter(mode='PSK').count()
+                    qso_12ft4 = q_12.filter(mode='FT4').count()
+                    qso_12ft8 = q_12.filter(mode='FT8').count()
 
                 q_10 = q1.filter(band='28')
                 if q_10:
                     qso_10cw = q_10.filter(mode='CW').count()
                     qso_10ssb = q_10.filter(mode='SSB').count()
                     qso_10rtty = q_10.filter(mode='RTTY').count()
-                    qso_10psk = q_10.filter(mode=r'PSK').count()
-                    qso_10ft4 = q_10.filter(mode=r'FT4').count()
-                    qso_10ft8 = q_10.filter(mode=r'FT8').count()
+                    qso_10psk = q_10.filter(mode='PSK').count()
+                    qso_10ft4 = q_10.filter(mode='FT4').count()
+                    qso_10ft8 = q_10.filter(mode='FT8').count()
 
                 total_160 = qso_160cw + qso_160ssb + qso_160rtty + qso_160psk + qso_160ft4 + qso_160ft8
                 total_80 = qso_80cw + qso_80ssb + qso_80rtty + qso_80psk + qso_80ft4 + qso_80ft8
@@ -1720,62 +1720,62 @@ def rand(request):
                 qso_160cw = q_160.filter(mode='CW').count()
                 qso_160ssb = q_160.filter(mode='SSB').count()
                 qso_160rtty = q_160.filter(mode='RTTY').count()
-                qso_160psk = q_160.filter(mode=r'PSK').count()
+                qso_160psk = q_160.filter(mode='PSK').count()
 
             q_80 = q1.filter(band='4')
             if q_80:
                 qso_80cw = q_80.filter(mode='CW').count()
                 qso_80ssb = q_80.filter(mode='SSB').count()
                 qso_80rtty = q_80.filter(mode='RTTY').count()
-                qso_80psk = q_80.filter(mode=r'PSK').count()
+                qso_80psk = q_80.filter(mode='PSK').count()
 
             q_40 = q1.filter(band='7')
             if q_40:
                 qso_40cw = q_40.filter(mode='CW').count()
                 qso_40ssb = q_40.filter(mode='SSB').count()
                 qso_40rtty = q_40.filter(mode='RTTY').count()
-                qso_40psk = q_40.filter(mode=r'PSK').count()
+                qso_40psk = q_40.filter(mode='PSK').count()
 
             q_30 = q1.filter(band='10')
             if q_30:
                 qso_30cw = q_30.filter(mode='CW').count()
                 qso_30rtty = q_30.filter(mode='RTTY').count()
-                qso_30psk = q_30.filter(mode=r'PSK').count()
+                qso_30psk = q_30.filter(mode='PSK').count()
 
             q_20 = q1.filter(band='14')
             if q_20:
                 qso_20cw = q_20.filter(mode='CW').count()
                 qso_20ssb = q_20.filter(mode='SSB').count()
                 qso_20rtty = q_20.filter(mode='RTTY').count()
-                qso_20psk = q_20.filter(mode=r'PSK').count()
+                qso_20psk = q_20.filter(mode='PSK').count()
 
             q_17 = q1.filter(band='18')
             if q_17:
                 qso_17cw = q_17.filter(mode='CW').count()
                 qso_17ssb = q_17.filter(mode='SSB').count()
                 qso_17rtty = q_17.filter(mode='RTTY').count()
-                qso_17psk = q_17.filter(mode=r'PSK').count()
+                qso_17psk = q_17.filter(mode='PSK').count()
 
             q_15 = q1.filter(band='21')
             if q_15:
                 qso_15cw = q_15.filter(mode='CW').count()
                 qso_15ssb = q_15.filter(mode='SSB').count()
                 qso_15rtty = q_15.filter(mode='RTTY').count()
-                qso_15psk = q_15.filter(mode=r'PSK').count()
+                qso_15psk = q_15.filter(mode='PSK').count()
 
             q_12 = q1.filter(band='25')
             if q_12:
                 qso_12cw = q_12.filter(mode='CW').count()
                 qso_12ssb = q_12.filter(mode='SSB').count()
                 qso_12rtty = q_12.filter(mode='RTTY').count()
-                qso_12psk = q_12.filter(mode=r'PSK').count()
+                qso_12psk = q_12.filter(mode='PSK').count()
 
             q_10 = q1.filter(band='28')
             if q_10:
                 qso_10cw = q_10.filter(mode='CW').count()
                 qso_10ssb = q_10.filter(mode='SSB').count()
                 qso_10rtty = q_10.filter(mode='RTTY').count()
-                qso_10psk = q_10.filter(mode=r'PSK').count()
+                qso_10psk = q_10.filter(mode='PSK').count()
 
             total_160 = qso_160cw + qso_160ssb + qso_160rtty + qso_160psk
             total_80 = qso_80cw + qso_80ssb + qso_80rtty + qso_80psk
@@ -2054,17 +2054,17 @@ def call_allmode(request):
         if entry.callsign not in call_onrtty:
             call_onrtty.append(entry.callsign)
 
-    cl_psk = q_diff.filter(mode=r'PSK')
+    cl_psk = q_diff.filter(mode='PSK')
     for entry in cl_psk:
         if entry.callsign not in call_onpsk:
             call_onpsk.append(entry.callsign)
 
-    cl_ft4 = q_diff.filter(mode=r'FT4')
+    cl_ft4 = q_diff.filter(mode='FT4')
     for entry in cl_ft4:
         if entry.callsign not in call_onft4:
             call_onft4.append(entry.callsign)
 
-    cl_ft8 = q_diff.filter(mode=r'FT8')
+    cl_ft8 = q_diff.filter(mode='FT8')
     for entry in cl_ft8:
         if entry.callsign not in call_onft8:
             call_onft8.append(entry.callsign)
@@ -2112,7 +2112,7 @@ def call_allbands_mode(request):
         if entry.callsign not in call_onrtty:
             call_onrtty.append(entry.callsign)
 
-    cl_psk = q_diff.filter(mode=r'PSK')
+    cl_psk = q_diff.filter(mode='PSK')
     for entry in cl_psk:
         if entry.callsign not in call_onpsk:
             call_onpsk.append(entry.callsign)
