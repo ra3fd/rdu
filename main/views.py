@@ -1087,7 +1087,7 @@ def statistics(request):
     # qso total:
 
     if all_count != 0:
-        total_160S = qso_160cw + qso_160ssb + qso_160rtty + qso_160psk + qso_160ft4 + qso_160ft8 # Всего QSO на 160
+        total_160S = qso_160cw + qso_160ssb + qso_160rtty + qso_160psk + qso_160ft4 + qso_160ft8
         total_160 = str(round(float(total_160S) / float(all_count) * 100, 2))  # В процентах на 160
         total_80S = qso_80cw + qso_80ssb + qso_80rtty + qso_80psk + qso_80ft4 + qso_80ft8
         total_80 = str(round(float(total_80S) / float(all_count) * 100, 2))

@@ -17,7 +17,7 @@
 
     <div style="text-align: center;">
 
-        Total <span><big>{{ all_count }}</big> QSOs (<z title= {{ diff_calls_all_procent|default:'' }}>{{ diff_calls_all }}</z> unique calls)
+        Total <span><big>{{ all_count }}</big> QSOs (<z title= {{ diff_calls_all_procent }}>{{ diff_calls_all }}</z> unique calls)
         <p>start {{ log_start|date:"Y-M-d" }}</p>
         <p>update {{ log_update|date:"Y-M-d" }}</p></span>
 
@@ -99,6 +99,39 @@
             <td style="text-align: center; font-size: 14px ">{{ total_psk }}</td>
 
         </tr>
+        
+                <tr style="text-align: center; font-size: 14px">
+            <td  height="23" style="text-align: center; font-size: 11px">ft4</td>
+            <td  width="55"  title="{{ procent_title_160ft4 }}%">{{ qso_160ft4|default:'' }} ({{ len_160ft4_diff }})</td>
+            <td  title="{{ procent_title_80ft4 }}%">{{ qso_80ft4|default:'' }} ({{ len_80ft4_diff }})</td>
+            <td  title="{{ procent_title_40ft4 }}%">{{ qso_40ft4|default:'' }} ({{ len_40ft4_diff }})</td>
+            <td  title="{{ procent_title_30ft4 }}%">{{ qso_30ft4|default:'' }} ({{ len_30ft4_diff }})</td>
+            <td  title="{{ procent_title_20ft4 }}%">{{ qso_20ft4|default:'' }} ({{ len_20ft4_diff }})</td>
+            <td  title="{{ procent_title_17ft4 }}">{{ qso_17ft4|default:'' }} ({{ len_17ft4_diff }})</td>
+            <td  title="{{ procent_title_15ft4 }}%">{{ qso_15ft4|default:'' }} ({{ len_15ft4_diff }})</td>
+            <td  title="{{ procent_title_12ft4 }}">{{ qso_12ft4|default:'' }} ({{ len_12ft4_diff }})</td>
+            <td  title="{{ procent_title_10ft4 }}%">{{ qso_10ft4|default:'' }} ({{ len_10ft4_diff }})</td>
+            <td  title="{{ procent_title_sum_ft4 }}%">{{ total_ft4s }} ({{ len_diff_ft4s }})</td>
+            <td style="text-align: center; font-size: 14px ">{{ total_ft4 }}</td>
+
+        </tr>
+
+                <tr style="text-align: center; font-size: 14px">
+            <td  height="23" style="text-align: center; font-size: 11px">ft8</td>
+            <td  width="55"  title="{{ procent_title_160ft8 }}%">{{ qso_160ft8|default:'' }} ({{ len_160ft8_diff }})</td>
+            <td  title="{{ procent_title_80ft8 }}%">{{ qso_80ft8|default:'' }} ({{ len_80ft8_diff }})</td>
+            <td  title="{{ procent_title_40ft8 }}%">{{ qso_40ft8|default:'' }} ({{ len_40ft8_diff }})</td>
+            <td  title="{{ procent_title_30ft8 }}%">{{ qso_30ft8|default:'' }} ({{ len_30ft8_diff }})</td>
+            <td  title="{{ procent_title_20ft8 }}%">{{ qso_20ft8|default:'' }} ({{ len_20ft8_diff }})</td>
+            <td  title="{{ procent_title_17ft8 }}">{{ qso_17ft8|default:'' }} ({{ len_17ft8_diff }})</td>
+            <td  title="{{ procent_title_15ft8 }}%">{{ qso_15ft8|default:'' }} ({{ len_15ft8_diff }})</td>
+            <td  title="{{ procent_title_12ft8 }}">{{ qso_12ft8|default:'' }} ({{ len_12ft8_diff }})</td>
+            <td  title="{{ procent_title_10ft8 }}%">{{ qso_10ft8|default:'' }} ({{ len_10ft8_diff }})</td>
+            <td  title="{{ procent_title_sum_ft8 }}%">{{ total_ft8s }} ({{ len_diff_ft8s }})</td>
+            <td style="text-align: center; font-size: 14px ">{{ total_ft8 }}</td>
+
+        </tr>
+
 
         <tr style="text-align: center; font-size: 14px">
                     <td  height="23" style="font-size: 11px"><big>Sum</big></td>
