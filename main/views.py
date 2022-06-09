@@ -17,7 +17,7 @@ def base(request):
     return render(request, 'main/base.html', locals())
 
 
-@cache_page(60 * 60)
+@cache_page(60)
 def search(request):
 
     # win32api.LoadKeyboardLayout("00000409",1) # Переключение (?) раскладки клавиатуры
@@ -1315,34 +1315,34 @@ def statistics(request):
 def qso_period(request):
 
     t1 = time.time()
-    dtc1994 = [];
-    dtc1995 = [];
-    dtc1996 = [];
-    dtc1997 = [];
-    dtc1998 = [];
-    dtc1999 = [];
-    dtc2000 = [];
-    dtc2001 = [];
-    dtc2002 = [];
-    dtc2003 = [];
-    dtc2004 = [];
-    dtc2005 = [];
-    dtc2006 = [];
-    dtc2007 = [];
-    dtc2008 = [];
-    dtc2009 = [];
-    dtc2010 = [];
-    dtc2011 = [];
-    dtc2012 = [];
-    dtc2013 = [];
-    dtc2014 = [];
-    dtc2015 = [];
-    dtc2016 = [];
-    dtc2017 = [];
-    dtc2018 = [];
-    dtc2019 = [];
-    dtc2020 = [];
-    dtc2021 = [];
+    dtc1994 = []
+    dtc1995 = []
+    dtc1996 = []
+    dtc1997 = []
+    dtc1998 = []
+    dtc1999 = []
+    dtc2000 = []
+    dtc2001 = []
+    dtc2002 = []
+    dtc2003 = []
+    dtc2004 = []
+    dtc2005 = []
+    dtc2006 = []
+    dtc2007 = []
+    dtc2008 = []
+    dtc2009 = []
+    dtc2010 = []
+    dtc2011 = []
+    dtc2012 = []
+    dtc2013 = []
+    dtc2014 = []
+    dtc2015 = []
+    dtc2016 = []
+    dtc2017 = []
+    dtc2018 = []
+    dtc2019 = []
+    dtc2020 = []
+    dtc2021 = []
     dtc2022 = []
 
     q_diff = Entry.objects.all()  # Список QSO
