@@ -33,7 +33,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'qjbn(ij$gm$t_h_#ifq&$xj$z56fls263p-3sl6%ac#r^6i+jm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -86,6 +86,18 @@ WSGI_APPLICATION = 'ra3fd.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sk',
+        'USER': 'sk',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '5432',
+    }
+}
+
+'''
 DATABASES = {'default': {}}
 try:
 
@@ -109,7 +121,7 @@ except UndefinedValueError:
     db_from_env = dj_database_url.config()
     DATABASES['default'].update(db_from_env)
 
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
