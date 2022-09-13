@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.contrib import staticfiles
 
 SECRET_KEY = config('SECRET_KEY')
-#DJANGO_DEBUG = config('DJANGO_DEBUG')
+# DJANGO_DEBUG = config('DJANGO_DEBUG')
 DB_ENGINE = config('DB_ENGINE')
 DB_NAME = config('DB_NAME')
 DB_USER = config('DB_USER')
@@ -99,8 +99,7 @@ try:
             'PORT': '',
             # 'OPTIONS': {
             #    'init_command': 'SET innodb_strict_mode=1',
-            #    'init_command': "SET sql_mode='STRICT_TRANS_TABL
-            # },
+            #    'init_command': 'SET sql_mode='STRICT_TRANS_TABLES},
 
         }
     }

@@ -214,21 +214,21 @@ def search(request):
 
                     # Блок исключений - 2 шт.
 
-                    if re.match(r'^(r|u).+[8,9,0]$', callsign, re.I):  # /8, /9, /0 - Asiatic Russia
+                    if re.match(r'^[ru].+[8,9,0]$', callsign, re.I):  # /8, /9, /0 - Asiatic Russia
                         cll = 'Asiatic Russia'
                         cl.append(cll)
                         if qso:
                             cname = cl.pop()
                             pref.append('RA9')
 
-                    if re.match(r'^(r|u).+[1,3-7]$', callsign, re.I):  # /1,3-7 - European Russia
+                    if re.match(r'^[ru].+[1,3-7]$', callsign, re.I):  # /1,3-7 - European Russia
                         cll = 'European Russia'
                         cl.append(cll)
                         if qso:
                             cname = cl.pop()
                             pref.append('RA')
 
-                    if re.match(r'^(r|u).+2$', callsign, re.I):
+                    if re.match(r'^[ru].+2$', callsign, re.I):
                         cll = 'Kaliningrad'
                         cl.append(cll)
                         if qso:
@@ -289,7 +289,7 @@ def search(request):
                             cname = cl.pop()
                             pref.append('RA9')
 
-                    if re.search(r".+(/RA|/RA9(F|G)|/R9(F|G)|/UA9(F|G))$", callsign, re.I):  # 6
+                    if re.search(r".+(/RA|/RA9[FG]|/R9[FG]|/UA9[FG])$", callsign, re.I):  # 6
                         cll = 'European Russia'
                         cl.append(cll)
                         if qso:
@@ -1315,65 +1315,65 @@ def statistics(request):
 def qso_period(request):
 
     t1 = time.time()
-    dtc1994 = [];
-    dtc1995 = [];
-    dtc1996 = [];
-    dtc1997 = [];
-    dtc1998 = [];
-    dtc1999 = [];
-    dtc2000 = [];
-    dtc2001 = [];
-    dtc2002 = [];
-    dtc2003 = [];
-    dtc2004 = [];
-    dtc2005 = [];
-    dtc2006 = [];
-    dtc2007 = [];
-    dtc2008 = [];
-    dtc2009 = [];
-    dtc2010 = [];
-    dtc2011 = [];
-    dtc2012 = [];
-    dtc2013 = [];
-    dtc2014 = [];
-    dtc2015 = [];
-    dtc2016 = [];
-    dtc2017 = [];
-    dtc2018 = [];
-    dtc2019 = [];
-    dtc2020 = [];
-    dtc2021 = [];
+    dtc1994 = []
+    dtc1995 = []
+    dtc1996 = []
+    dtc1997 = []
+    dtc1998 = []
+    dtc1999 = []
+    dtc2000 = []
+    dtc2001 = []
+    dtc2002 = []
+    dtc2003 = []
+    dtc2004 = []
+    dtc2005 = []
+    dtc2006 = []
+    dtc2007 = []
+    dtc2008 = []
+    dtc2009 = []
+    dtc2010 = []
+    dtc2011 = []
+    dtc2012 = []
+    dtc2013 = []
+    dtc2014 = []
+    dtc2015 = []
+    dtc2016 = []
+    dtc2017 = []
+    dtc2018 = []
+    dtc2019 = []
+    dtc2020 = []
+    dtc2021 = []
     dtc2022 = []
 
     q_diff = Entry.objects.all()  # Список QSO
-    dtf1994 = q_diff.filter(datetime__year='1994');
-    dtf1995 = q_diff.filter(datetime__year='1995');
-    dtf1996 = q_diff.filter(datetime__year='1996');
-    dtf1997 = q_diff.filter(datetime__year='1997');
-    dtf1998 = q_diff.filter(datetime__year='1998');
-    dtf1999 = q_diff.filter(datetime__year='1999');
-    dtf2000 = q_diff.filter(datetime__year='2000');
-    dtf2001 = q_diff.filter(datetime__year='2001');
-    dtf2002 = q_diff.filter(datetime__year='2002');
-    dtf2003 = q_diff.filter(datetime__year='2003');
-    dtf2004 = q_diff.filter(datetime__year='2004');
-    dtf2005 = q_diff.filter(datetime__year='2005');
-    dtf2006 = q_diff.filter(datetime__year='2006');
-    dtf2007 = q_diff.filter(datetime__year='2007');
-    dtf2008 = q_diff.filter(datetime__year='2008');
-    dtf2009 = q_diff.filter(datetime__year='2009');
-    dtf2010 = q_diff.filter(datetime__year='2010');
-    dtf2011 = q_diff.filter(datetime__year='2011');
-    dtf2012 = q_diff.filter(datetime__year='2012');
-    dtf2013 = q_diff.filter(datetime__year='2013');
-    dtf2014 = q_diff.filter(datetime__year='2014');
-    dtf2015 = q_diff.filter(datetime__year='2015');
-    dtf2016 = q_diff.filter(datetime__year='2016');
-    dtf2017 = q_diff.filter(datetime__year='2017');
-    dtf2018 = q_diff.filter(datetime__year='2018');
-    dtf2019 = q_diff.filter(datetime__year='2019');
-    dtf2020 = q_diff.filter(datetime__year='2020');
-    dtf2021 = q_diff.filter(datetime__year='2021');
+    dtf1994 = q_diff.filter(datetime__year='1994')
+    dtf1995 = q_diff.filter(datetime__year='1995')
+    dtf1996 = q_diff.filter(datetime__year='1996')
+    dtf1997 = q_diff.filter(datetime__year='1997')
+    dtf1998 = q_diff.filter(datetime__year='1998')
+    dtf1999 = q_diff.filter(datetime__year='1999')
+    dtf2000 = q_diff.filter(datetime__year='2000')
+    dtf2001 = q_diff.filter(datetime__year='2001')
+    dtf2002 = q_diff.filter(datetime__year='2002')
+    dtf2003 = q_diff.filter(datetime__year='2003')
+    dtf2004 = q_diff.filter(datetime__year='2004')
+    dtf2005 = q_diff.filter(datetime__year='2005')
+    dtf2006 = q_diff.filter(datetime__year='2006')
+    dtf2007 = q_diff.filter(datetime__year='2007')
+    dtf2008 = q_diff.filter(datetime__year='2008')
+    dtf2009 = q_diff.filter(datetime__year='2009')
+    dtf2010 = q_diff.filter(datetime__year='2010')
+    dtf2011 = q_diff.filter(datetime__year='2011')
+    dtf2012 = q_diff.filter(datetime__year='2012')
+    dtf2013 = q_diff.filter(datetime__year='2013')
+    dtf2014 = q_diff.filter(datetime__year='2014')
+    dtf2015 = q_diff.filter(datetime__year='2015')
+    dtf2016 = q_diff.filter(datetime__year='2016')
+    dtf2017 = q_diff.filter(datetime__year='2017')
+    dtf2018 = q_diff.filter(datetime__year='2018')
+    dtf2019 = q_diff.filter(datetime__year='2019')
+    dtf2020 = q_diff.filter(datetime__year='2020')
+    dtf2021 = q_diff.filter(datetime__year='2021')
     dtf2022 = q_diff.filter(datetime__year='2022')
 
     for entry in dtf1994:
@@ -1537,34 +1537,34 @@ def qso_period(request):
             diff_calls_period.append(entry.callsign)
     diff_calls_period = len(diff_calls_period)
 
-    dty1994 = dty.count('1994');
-    dty1995 = dty.count('1995');
-    dty1996 = dty.count('1996');
-    dty1997 = dty.count('1997');
-    dty1998 = dty.count('1998');
-    dty1999 = dty.count('1999');
-    dty2000 = dty.count('2000');
-    dty2001 = dty.count('2001');
-    dty2002 = dty.count('2002');
-    dty2003 = dty.count('2003');
-    dty2004 = dty.count('2004');
-    dty2005 = dty.count('2005');
-    dty2006 = dty.count('2006');
-    dty2007 = dty.count('2007');
-    dty2008 = dty.count('2008');
-    dty2009 = dty.count('2009');
-    dty2010 = dty.count('2010');
-    dty2011 = dty.count('2011');
-    dty2012 = dty.count('2012');
-    dty2013 = dty.count('2013');
-    dty2014 = dty.count('2014');
-    dty2015 = dty.count('2015');
-    dty2016 = dty.count('2016');
-    dty2017 = dty.count('2017');
-    dty2018 = dty.count('2018');
-    dty2019 = dty.count('2019');
-    dty2020 = dty.count('2020');
-    dty2021 = dty.count('2021');
+    dty1994 = dty.count('1994')
+    dty1995 = dty.count('1995')
+    dty1996 = dty.count('1996')
+    dty1997 = dty.count('1997')
+    dty1998 = dty.count('1998')
+    dty1999 = dty.count('1999')
+    dty2000 = dty.count('2000')
+    dty2001 = dty.count('2001')
+    dty2002 = dty.count('2002')
+    dty2003 = dty.count('2003')
+    dty2004 = dty.count('2004')
+    dty2005 = dty.count('2005')
+    dty2006 = dty.count('2006')
+    dty2007 = dty.count('2007')
+    dty2008 = dty.count('2008')
+    dty2009 = dty.count('2009')
+    dty2010 = dty.count('2010')
+    dty2011 = dty.count('2011')
+    dty2012 = dty.count('2012')
+    dty2013 = dty.count('2013')
+    dty2014 = dty.count('2014')
+    dty2015 = dty.count('2015')
+    dty2016 = dty.count('2016')
+    dty2017 = dty.count('2017')
+    dty2018 = dty.count('2018')
+    dty2019 = dty.count('2019')
+    dty2020 = dty.count('2020')
+    dty2021 = dty.count('2021')
     dty2022 = dty.count('2022')
 
     if dty1994 != 0:
@@ -1626,42 +1626,42 @@ def qso_period(request):
     if dty2022 != 0:
         procent_ncalls_2022 = str(round(float(dtcl_2022) / float(dty2022) * 100, 1))
 
-    dtm1 = dtm.count('1');
-    dtm2 = dtm.count('2');
-    dtm3 = dtm.count('3');
-    dtm4 = dtm.count('4');
-    dtm5 = dtm.count('5');
-    dtm6 = dtm.count('6');
-    dtm7 = dtm.count('7');
-    dtm8 = dtm.count('8');
-    dtm9 = dtm.count('9');
-    dtm10 = dtm.count('10');
-    dtm11 = dtm.count('11');
+    dtm1 = dtm.count('1')
+    dtm2 = dtm.count('2')
+    dtm3 = dtm.count('3')
+    dtm4 = dtm.count('4')
+    dtm5 = dtm.count('5')
+    dtm6 = dtm.count('6')
+    dtm7 = dtm.count('7')
+    dtm8 = dtm.count('8')
+    dtm9 = dtm.count('9')
+    dtm10 = dtm.count('10')
+    dtm11 = dtm.count('11')
     dtm12 = dtm.count('12')
 
-    dtt0 = dtt.count('3');
-    dtt1 = dtt.count('4');
-    dtt2 = dtt.count('5');
-    dtt3 = dtt.count('6');
-    dtt4 = dtt.count('7');
-    dtt5 = dtt.count('8');
-    dtt6 = dtt.count('9');
-    dtt7 = dtt.count('10');
-    dtt8 = dtt.count('11');
-    dtt9 = dtt.count('12');
-    dtt10 = dtt.count('13');
-    dtt11 = dtt.count('14');
-    dtt12 = dtt.count('15');
-    dtt13 = dtt.count('16');
-    dtt14 = dtt.count('17');
-    dtt15 = dtt.count('18');
-    dtt16 = dtt.count('19');
-    dtt17 = dtt.count('20');
-    dtt18 = dtt.count('21');
-    dtt19 = dtt.count('22');
-    dtt20 = dtt.count('23');
-    dtt21 = dtt.count('0');
-    dtt22 = dtt.count('1');
+    dtt0 = dtt.count('3')
+    dtt1 = dtt.count('4')
+    dtt2 = dtt.count('5')
+    dtt3 = dtt.count('6')
+    dtt4 = dtt.count('7')
+    dtt5 = dtt.count('8')
+    dtt6 = dtt.count('9')
+    dtt7 = dtt.count('10')
+    dtt8 = dtt.count('11')
+    dtt9 = dtt.count('12')
+    dtt10 = dtt.count('13')
+    dtt11 = dtt.count('14')
+    dtt12 = dtt.count('15')
+    dtt13 = dtt.count('16')
+    dtt14 = dtt.count('17')
+    dtt15 = dtt.count('18')
+    dtt16 = dtt.count('19')
+    dtt17 = dtt.count('20')
+    dtt18 = dtt.count('21')
+    dtt19 = dtt.count('22')
+    dtt20 = dtt.count('23')
+    dtt21 = dtt.count('0')
+    dtt22 = dtt.count('1')
     dtt23 = dtt.count('2')
 
     t2 = time.time()
@@ -1871,13 +1871,13 @@ def rand(request):
 
                     # Блок исключений - 2 шт.
 
-                    if re.match(r'^(r|u).+[8,9,0]$', callsign, re.I):  # 1 call/9 - Asiatic Russia
+                    if re.match(r'^[ru].+[8,9,0]$', callsign, re.I):  # 1 call/9 - Asiatic Russia
                         cll = 'Asiatic Russia'
                         cl.append(cll)
                         cname = cl.pop()
                         pref.append('RA9')
 
-                    if re.match(r'^(r|u).+[1,3-7]$', callsign, re.I):  # 2 /1
+                    if re.match(r'^[ru].+[1,3-7]$', callsign, re.I):  # 2 /1
                         cll = 'European Russia'
                         cl.append(cll)
                         cname = cl.pop()
