@@ -458,8 +458,8 @@ def max_qso(request):
 
 def qsls(request):
     x = 'LOTW'
-    y = 'Direct (No SASE)'
-    z = 'E-mail request'
+    y = 'LOTW '*2
+    z = 'LOTW '*3
 
     fq = [x, y, z]
 
