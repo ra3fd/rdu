@@ -40,7 +40,6 @@ def search(request):
     qft4 = Entry.objects.filter(mode='MFSK')
     qft8 = Entry.objects.filter(mode='FT8')
 
-
     if 'q' in request.GET and request.GET['q']:
 
         data = request.GET['q']
@@ -189,7 +188,7 @@ def search(request):
                             call) + ':' in line or ',' + str(call) + ';' in line or ' ' + str(
                         call) + ';' in line or ',' + str(call) + '(' in line or '=' + str(
                         call) + '(' in line or '=' + str(call) + ',' in line or '=' + str(
-                        call) + '[' in line or ',' + str(call) + '[' in line:
+                         call) + '[' in line or ',' + str(call) + '[' in line:
 
                         cll = str(entry.cty)
 
@@ -1848,7 +1847,7 @@ def rand(request):
                                 call) + ':' in line or ',' + str(call) + ';' in line or ' ' + str(
                             call) + ';' in line or ',' + str(call) + '(' in line or '=' + str(
                             call) + '(' in line or '=' + str(call) + ',' in line or '=' + str(
-                            call) + '[' in line or ',' + str(call) + '[' in line:
+                                call) + '[' in line or ',' + str(call) + '[' in line:
 
                             cll = str(entry.cty)
 
