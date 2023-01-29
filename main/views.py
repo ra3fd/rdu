@@ -401,11 +401,11 @@ def new_calls(request):
     for item in newcalls:
         logorder.append(item.callsign)
     for i in range(len(logorder) + 1):
-        if len(logorder_one) <= 300:
+        if len(logorder_one) <= 250:
             if logorder.count(logorder[i]) == 1:
                 logorder_one.append(logorder[i])
     q_zz = Entry.objects.filter(callsign=logorder_one[0])
-    q_z = Entry.objects.filter(callsign=logorder_one[300])
+    q_z = Entry.objects.filter(callsign=logorder_one[250])
 
     t2 = time.time()
     tt = str(t2 - t1)[:4]
