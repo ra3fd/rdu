@@ -1343,6 +1343,7 @@ def qso_period(request):
     dtc2020 = []
     dtc2021 = []
     dtc2022 = []
+    dtc2023 = []
 
     q_diff = Entry.objects.all()  # Список QSO
     dtf1994 = q_diff.filter(datetime__year='1994')
@@ -1374,6 +1375,7 @@ def qso_period(request):
     dtf2020 = q_diff.filter(datetime__year='2020')
     dtf2021 = q_diff.filter(datetime__year='2021')
     dtf2022 = q_diff.filter(datetime__year='2022')
+    dtf2023 = q_diff.filter(datetime__year='2023')
 
     for entry in dtf1994:
         if entry.callsign not in dtc1994:
@@ -1520,6 +1522,11 @@ def qso_period(request):
             dtc2022.append(entry.callsign)
     dtcl_2022 = len(dtc2022)
 
+    for entry in dtf2023:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019 and entry.callsign not in dtc2020 and entry.callsign not in dtc2021 and entry.callsign not in dtc2022 and entry.callsign not in dtc2023:
+            dtc2023.append(entry.callsign)
+    dtcl_2023 = len(dtc2023)
+
     all_count = q_diff.count()
 
     dty = []
@@ -1565,6 +1572,7 @@ def qso_period(request):
     dty2020 = dty.count('2020')
     dty2021 = dty.count('2021')
     dty2022 = dty.count('2022')
+    dty2023 = dty.count('2023')
 
     if dty1994 != 0:
         procent_ncalls_1994 = str(round(float(dtcl_1994) / float(dty1994) * 100, 1))
@@ -1624,6 +1632,8 @@ def qso_period(request):
         procent_ncalls_2021 = str(round(float(dtcl_2021) / float(dty2021) * 100, 1))
     if dty2022 != 0:
         procent_ncalls_2022 = str(round(float(dtcl_2022) / float(dty2022) * 100, 1))
+    if dty2023 != 0:
+        procent_ncalls_2023 = str(round(float(dtcl_2023) / float(dty2023) * 100, 1))
 
     dtm1 = dtm.count('1')
     dtm2 = dtm.count('2')
