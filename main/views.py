@@ -28,7 +28,8 @@ def search(request):
 
     qso_160cw = qso_80cw = qso_40cw = qso_30cw = qso_20cw = qso_17cw = qso_15cw = qso_12cw = qso_10cw = 0
     qso_160ssb = qso_80ssb = qso_40ssb = qso_20ssb = qso_17ssb = qso_15ssb = qso_12ssb = qso_10ssb = 0
-    qso_160rtty = qso_80rtty = qso_40rtty = qso_30rtty = qso_20rtty = qso_17rtty = qso_15rtty = qso_12rtty = qso_10rtty = 0
+    qso_160rtty = qso_80rtty = qso_40rtty = qso_30rtty = qso_20rtty = qso_17rtty = qso_15rtty = qso_12rtty \
+        = qso_10rtty = 0
     qso_160psk = qso_80psk = qso_40psk = qso_30psk = qso_20psk = qso_17psk = qso_15psk = qso_12psk = qso_10psk = 0
     qso_160ft4 = qso_80ft4 = qso_40ft4 = qso_30ft4 = qso_20ft4 = qso_17ft4 = qso_15ft4 = qso_12ft4 = qso_10ft4 = 0
     qso_160ft8 = qso_80ft8 = qso_40ft8 = qso_30ft8 = qso_20ft8 = qso_17ft8 = qso_15ft8 = qso_12ft8 = qso_10ft8 = 0
@@ -158,12 +159,18 @@ def search(request):
                 total_12 = qso_12cw + qso_12ssb + qso_12rtty + qso_12psk + qso_12ft4 + qso_12ft8
                 total_10 = qso_10cw + qso_10ssb + qso_10rtty + qso_10psk + qso_10ft4 + qso_10ft8
 
-                total_cw = qso_160cw + qso_80cw + qso_40cw + qso_30cw + qso_20cw + qso_17cw + qso_15cw + qso_12cw + qso_10cw
-                total_ssb = qso_160ssb + qso_80ssb + qso_40ssb + qso_20ssb + qso_17ssb + qso_15ssb + qso_12ssb + qso_10ssb
-                total_rtty = qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty + qso_12rtty + qso_10rtty
-                total_psk = qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk + qso_12psk + qso_10psk
-                total_ft4 = qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 + qso_15ft4 + qso_12ft4 + qso_10ft4
-                total_ft8 = qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 + qso_17ft8 + qso_15ft8 + qso_12ft8 + qso_10ft8
+                total_cw = qso_160cw + qso_80cw + qso_40cw + qso_30cw + qso_20cw + qso_17cw + qso_15cw + qso_12cw \
+                           + qso_10cw
+                total_ssb = qso_160ssb + qso_80ssb + qso_40ssb + qso_20ssb + qso_17ssb + qso_15ssb + qso_12ssb \
+                            + qso_10ssb
+                total_rtty = qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty \
+                             + qso_12rtty + qso_10rtty
+                total_psk = qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk \
+                            + qso_12psk + qso_10psk
+                total_ft4 = qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 + qso_15ft4 \
+                            + qso_12ft4 + qso_10ft4
+                total_ft8 = qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 + qso_17ft8 + qso_15ft8 \
+                            + qso_12ft8 + qso_10ft8
 
             else:
                 pass
@@ -207,7 +214,9 @@ def search(request):
                                 if entry.cont == cont_short[l]:
                                     cont = cont_long[l]
                                     cnam = cname[:-1]  # Убираем запятую
-                                    if cname == 'European Russia,' or cname == 'European Turkey,' or cname == 'Asiatic Russia,' or cname == 'Asiatic Turkey,' or cname == 'South Africa,' or cname == 'Antarctica,':
+                                    if cname == 'European Russia,' or cname == 'European Turkey,' or cname \
+                                            == 'Asiatic Russia,' or cname == 'Asiatic Turkey,' or cname \
+                                            == 'South Africa,' or cname == 'Antarctica,':
                                         cname = cnam  # Не дублируем континент
                                         cont = ''
 
@@ -466,7 +475,8 @@ def qsls(request):
     fqq2 = random.choice(fq)
     fqq3 = random.choice(fq)
 
-    while fqq3 == fqq1 or fqq3 == fqq2 or fqq2 == fqq1:  # Делать случайные выборки до тех пор, пока значения x,y,z не будут различными:
+    while fqq3 == fqq1 or fqq3 == fqq2 or fqq2 == fqq1:  # Делать случайные выборки до тех пор, \
+        # пока значения x,y,z не будут различными:
 
         fqq1 = random.choice(fq)
         fqq2 = random.choice(fq)
@@ -1111,13 +1121,17 @@ def statistics(request):
         total_cw = str(round(float(total_cws) / float(all_count) * 100, 2))
         total_ssbs = qso_160ssb + qso_80ssb + qso_40ssb + qso_20ssb + qso_17ssb + qso_15ssb + qso_12ssb + qso_10ssb
         total_ssb = str(round(float(total_ssbs) / float(all_count) * 100, 2))
-        total_rttys = qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty + qso_12rtty + qso_10rtty
+        total_rttys = qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty \
+                      + qso_12rtty + qso_10rtty
         total_rtty = str(round(float(total_rttys) / float(all_count) * 100, 2))
-        total_psks = qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk + qso_12psk + qso_10psk
+        total_psks = qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk + qso_12psk \
+                     + qso_10psk
         total_psk = str(round(float(total_psks) / float(all_count) * 100, 2))
-        total_ft4s = qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 + qso_15ft4 + qso_12ft4 + qso_10ft4
+        total_ft4s = qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 + qso_15ft4 + qso_12ft4 \
+                     + qso_10ft4
         total_ft4 = str(round(float(total_ft4s) / float(all_count) * 100, 2))
-        total_ft8s = qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 + qso_17ft8 + qso_15ft8 + qso_12ft8 + qso_10ft8
+        total_ft8s = qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 + qso_17ft8 + qso_15ft8 + qso_12ft8 \
+                     + qso_10ft8
         total_ft8 = str(round(float(total_ft8s) / float(all_count) * 100, 2))
 
         diff_calls_all_procent = str(round(float(diff_calls_all) / float(all_count) * 100, 2)) + '%'
@@ -1294,10 +1308,11 @@ def statistics(request):
 
     if qso_160cw + qso_80cw + qso_40cw + qso_30cw + qso_20cw + qso_17cw + qso_15cw + qso_12cw + qso_10cw + \
             qso_160ssb + qso_80ssb + qso_40ssb + qso_20ssb + qso_17ssb + qso_15ssb + qso_12ssb + qso_10ssb + \
-            qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty + qso_12rtty + qso_10rtty + \
-            qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk + qso_12psk + qso_10psk + \
-            qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 + qso_15ft4 + qso_12ft4 + qso_10ft4 + \
-            qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 + qso_17ft8 + qso_15ft8 + qso_12ft8 + qso_10ft8 == all_count:
+            qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty + qso_12rtty \
+            + qso_10rtty + qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk \
+            + qso_12psk + qso_10psk + qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 \
+            + qso_15ft4 + qso_12ft4 + qso_10ft4 + qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 \
+            + qso_17ft8 + qso_15ft8 + qso_12ft8 + qso_10ft8 == all_count:
 
         coincidence = '*'
 
@@ -1393,137 +1408,278 @@ def qso_period(request):
     dtcl_1996 = len(dtc1996)
 
     for entry in dtf1997:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997:
             dtc1997.append(entry.callsign)
     dtcl_1997 = len(dtc1997)
 
     for entry in dtf1998:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998:
             dtc1998.append(entry.callsign)
     dtcl_1998 = len(dtc1998)
 
     for entry in dtf1999:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999:
             dtc1999.append(entry.callsign)
     dtcl_1999 = len(dtc1999)
 
     for entry in dtf2000:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000:
             dtc2000.append(entry.callsign)
     dtcl_2000 = len(dtc2000)
 
     for entry in dtf2001:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001:
             dtc2001.append(entry.callsign)
     dtcl_2001 = len(dtc2001)
 
     for entry in dtf2002:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002:
             dtc2002.append(entry.callsign)
     dtcl_2002 = len(dtc2002)
 
     for entry in dtf2003:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003:
             dtc2003.append(entry.callsign)
     dtcl_2003 = len(dtc2003)
 
     for entry in dtf2004:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004:
             dtc2004.append(entry.callsign)
     dtcl_2004 = len(dtc2004)
 
     for entry in dtf2005:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005:
             dtc2005.append(entry.callsign)
     dtcl_2005 = len(dtc2005)
 
     for entry in dtf2006:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006:
             dtc2006.append(entry.callsign)
     dtcl_2006 = len(dtc2006)
 
     for entry in dtf2007:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007:
             dtc2007.append(entry.callsign)
     dtcl_2007 = len(dtc2007)
 
     for entry in dtf2008:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008:
             dtc2008.append(entry.callsign)
     dtcl_2008 = len(dtc2008)
 
     for entry in dtf2009:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009:
             dtc2009.append(entry.callsign)
     dtcl_2009 = len(dtc2009)
 
     for entry in dtf2010:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010:
             dtc2010.append(entry.callsign)
     dtcl_2010 = len(dtc2010)
 
     for entry in dtf2011:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011:
             dtc2011.append(entry.callsign)
     dtcl_2011 = len(dtc2011)
 
     for entry in dtf2012:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012:
             dtc2012.append(entry.callsign)
     dtcl_2012 = len(dtc2012)
 
     for entry in dtf2013:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013:
             dtc2013.append(entry.callsign)
     dtcl_2013 = len(dtc2013)
 
     for entry in dtf2014:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014:
             dtc2014.append(entry.callsign)
     dtcl_2014 = len(dtc2014)
 
     for entry in dtf2015:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014 and entry.callsign not in dtc2015:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014 and entry.callsign not in dtc2015:
             dtc2015.append(entry.callsign)
     dtcl_2015 = len(dtc2015)
 
     for entry in dtf2016:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016:
             dtc2016.append(entry.callsign)
     dtcl_2016 = len(dtc2016)
 
     for entry in dtf2017:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 and entry.callsign not in dtc2017:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 \
+                and entry.callsign not in dtc2017:
             dtc2017.append(entry.callsign)
     dtcl_2017 = len(dtc2017)
 
     for entry in dtf2018:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 and entry.callsign not in dtc2017 and entry.callsign not in dtc2018:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 \
+                and entry.callsign not in dtc2017 and entry.callsign not in dtc2018:
             dtc2018.append(entry.callsign)
     dtcl_2018 = len(dtc2018)
 
     for entry in dtf2019:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 \
+                and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019:
             dtc2019.append(entry.callsign)
     dtcl_2019 = len(dtc2019)
 
     for entry in dtf2020:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019 and entry.callsign not in dtc2020:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 \
+                and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019 \
+                and entry.callsign not in dtc2020:
             dtc2020.append(entry.callsign)
     dtcl_2020 = len(dtc2020)
 
     for entry in dtf2021:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019 and entry.callsign not in dtc2020 and entry.callsign not in dtc2021:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 \
+                and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019 \
+                and entry.callsign not in dtc2020 and entry.callsign not in dtc2021:
             dtc2021.append(entry.callsign)
     dtcl_2021 = len(dtc2021)
 
     for entry in dtf2022:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019 and entry.callsign not in dtc2020 and entry.callsign not in dtc2021 and entry.callsign not in dtc2022:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 \
+                and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019 \
+                and entry.callsign not in dtc2020 and entry.callsign not in dtc2021 and entry.callsign not in dtc2022:
             dtc2022.append(entry.callsign)
     dtcl_2022 = len(dtc2022)
 
     for entry in dtf2023:
-        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019 and entry.callsign not in dtc2020 and entry.callsign not in dtc2021 and entry.callsign not in dtc2022 and entry.callsign not in dtc2023:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 \
+                and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019 \
+                and entry.callsign not in dtc2020 and entry.callsign not in dtc2021 and entry.callsign not in dtc2022 \
+                and entry.callsign not in dtc2023:
             dtc2023.append(entry.callsign)
     dtcl_2023 = len(dtc2023)
 
@@ -1734,7 +1890,8 @@ def rand(request):
 
         qso_160cw = qso_80cw = qso_40cw = qso_30cw = qso_20cw = qso_17cw = qso_15cw = qso_12cw = qso_10cw = 0
         qso_160ssb = qso_80ssb = qso_40ssb = qso_20ssb = qso_17ssb = qso_15ssb = qso_12ssb = qso_10ssb = 0
-        qso_160rtty = qso_80rtty = qso_40rtty = qso_30rtty = qso_20rtty = qso_17rtty = qso_15rtty = qso_12rtty = qso_10rtty = 0
+        qso_160rtty = qso_80rtty = qso_40rtty = qso_30rtty = qso_20rtty = qso_17rtty = qso_15rtty = qso_12rtty \
+            = qso_10rtty = 0
         qso_160psk = qso_80psk = qso_40psk = qso_30psk = qso_20psk = qso_17psk = qso_15psk = qso_12psk = qso_10psk = 0
         qso_160ft4 = qso_80ft4 = qso_40ft4 = qso_30ft4 = qso_20ft4 = qso_17ft4 = qso_15ft4 = qso_12ft4 = qso_10ft4 = 0
         qso_160ft8 = qso_80ft8 = qso_40ft8 = qso_30ft8 = qso_20ft8 = qso_17ft8 = qso_15ft8 = qso_12ft8 = qso_10ft8 = 0
@@ -1833,10 +1990,14 @@ def rand(request):
 
             total_cw = qso_160cw + qso_80cw + qso_40cw + qso_30cw + qso_20cw + qso_17cw + qso_15cw + qso_12cw + qso_10cw
             total_ssb = qso_160ssb + qso_80ssb + qso_40ssb + qso_20ssb + qso_17ssb + qso_15ssb + qso_12ssb + qso_10ssb
-            total_rtty = qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty + qso_12rtty + qso_10rtty
-            total_psk = qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk + qso_12psk + qso_10psk
-            total_psk = qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 + qso_15ft4 + qso_12ft4 + qso_10ft4
-            total_psk = qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 + qso_17ft8 + qso_15ft8 + qso_12ft8 + qso_10ft8
+            total_rtty = qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty \
+                         + qso_12rtty + qso_10rtty
+            total_psk = qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk + qso_12psk \
+                        + qso_10psk
+            total_psk = qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 + qso_15ft4 + qso_12ft4 \
+                        + qso_10ft4
+            total_psk = qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 + qso_17ft8 + qso_15ft8 + qso_12ft8 \
+                        + qso_10ft8
             # Определение страны по позывному.
 
             if re.match(r'[\w/]{4,18}|\D\d\D$', data):
@@ -1874,7 +2035,9 @@ def rand(request):
                                 if entry.cont == cont_short[l]:
                                     cont = cont_long[l]
                                     cnam = cname[:-1]
-                                    if cname == 'European Russia,' or cname == 'European Turkey,' or cname == 'Asiatic Russia,' or cname == 'Asiatic Turkey,' or cname == 'South Africa,' or cname == 'Antarctica,':
+                                    if cname == 'European Russia,' or cname == 'European Turkey,' or cname \
+                                            == 'Asiatic Russia,' or cname == 'Asiatic Turkey,' or cname \
+                                            == 'South Africa,' or cname == 'Antarctica,':
                                         cname = cnam
                                         cont = ''
 
@@ -2115,7 +2278,8 @@ def call_allmode(request):
             call_onft8.append(entry.callsign)
 
     for item in call_onpsk:
-        if item in call_oncw and item in call_onssb and item in call_onrtty and item in call_onft4 and item in call_onft8:
+        if item in call_oncw and item in call_onssb and item in call_onrtty and item in call_onft4 and item \
+                in call_onft8:
             call_allmode.append(item)
     call_allmode.sort()
     len_call_allmode = len(call_allmode)
@@ -2175,7 +2339,8 @@ def call_allbands_mode(request):
             call_onft8.append(entry.callsign)
 
     for item in call_onpsk:
-        if item in call_oncw and item in call_onssb and item in call_onrtty and item in call_onft4 and item in call_onft8:
+        if item in call_oncw and item in call_onssb and item in call_onrtty and item in call_onft4 and item \
+                in call_onft8:
             call_allmode.append(item)
     call_allmode.sort()
 
