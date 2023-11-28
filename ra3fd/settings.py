@@ -15,7 +15,7 @@ from decouple import config, UndefinedValueError
 from django.conf.urls.static import static
 from django.contrib import staticfiles
 
-DEBUG = False
+DEBUG = True
 
 SECRET_KEY = config('SECRET_KEY')
 # DJANGO_DEBUG = config('DJANGO_DEBUG')
@@ -37,7 +37,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ["192.168.0.196", "ra3fd.com", "127.0.0.1", "127.0.1.1"]
+ALLOWED_HOSTS = ["192.168.0.138", "ra3fd.com", "127.0.0.1", "127.0.1.1"]
 
 # Application definition
 
@@ -148,7 +148,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
@@ -167,6 +167,7 @@ STATIC файлы.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
+
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'media', 'static'),)
 
