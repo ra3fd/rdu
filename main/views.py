@@ -1122,16 +1122,16 @@ def statistics(request):
         total_ssbs = qso_160ssb + qso_80ssb + qso_40ssb + qso_20ssb + qso_17ssb + qso_15ssb + qso_12ssb + qso_10ssb
         total_ssb = str(round(float(total_ssbs) / float(all_count) * 100, 2))
         total_rttys = qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty \
-                      + qso_12rtty + qso_10rtty
+            + qso_12rtty + qso_10rtty
         total_rtty = str(round(float(total_rttys) / float(all_count) * 100, 2))
         total_psks = qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk + qso_12psk \
-                     + qso_10psk
+            + qso_10psk
         total_psk = str(round(float(total_psks) / float(all_count) * 100, 2))
         total_ft4s = qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 + qso_15ft4 + qso_12ft4 \
-                     + qso_10ft4
+            + qso_10ft4
         total_ft4 = str(round(float(total_ft4s) / float(all_count) * 100, 2))
         total_ft8s = qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 + qso_17ft8 + qso_15ft8 + qso_12ft8 \
-                     + qso_10ft8
+            + qso_10ft8
         total_ft8 = str(round(float(total_ft8s) / float(all_count) * 100, 2))
 
         diff_calls_all_procent = str(round(float(diff_calls_all) / float(all_count) * 100, 2)) + '%'
@@ -2011,13 +2011,13 @@ def rand(request):
             total_cw = qso_160cw + qso_80cw + qso_40cw + qso_30cw + qso_20cw + qso_17cw + qso_15cw + qso_12cw + qso_10cw
             total_ssb = qso_160ssb + qso_80ssb + qso_40ssb + qso_20ssb + qso_17ssb + qso_15ssb + qso_12ssb + qso_10ssb
             total_rtty = qso_160rtty + qso_80rtty + qso_40rtty + qso_30rtty + qso_20rtty + qso_17rtty + qso_15rtty \
-                         + qso_12rtty + qso_10rtty
+                + qso_12rtty + qso_10rtty
             total_psk = qso_160psk + qso_80psk + qso_40psk + qso_30psk + qso_20psk + qso_17psk + qso_15psk + qso_12psk \
-                        + qso_10psk
+                + qso_10psk
             total_psk = qso_160ft4 + qso_80ft4 + qso_40ft4 + qso_30ft4 + qso_20ft4 + qso_17ft4 + qso_15ft4 + qso_12ft4 \
-                        + qso_10ft4
+                + qso_10ft4
             total_psk = qso_160ft8 + qso_80ft8 + qso_40ft8 + qso_30ft8 + qso_20ft8 + qso_17ft8 + qso_15ft8 + qso_12ft8 \
-                        + qso_10ft8
+                + qso_10ft8
             # Определение страны по позывному.
 
             if re.match(r'[\w/]{4,18}|\D\d\D$', data):
