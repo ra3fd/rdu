@@ -4,3 +4,4 @@ Django==3.2
 psycopg2-binary
 python-decouple==3.6
 sqlparse==0.4.4
+#sudo systemctl restart apache2
