@@ -17,7 +17,7 @@ def base(request):
     return render(request, 'main/base.html', locals())
 
 
-@cache_page(60 * 60)
+#@cache_page(60 * 60)
 def search(request):
 
     # win32api.LoadKeyboardLayout("00000409",1) # Переключение (?) раскладки клавиатуры
@@ -346,7 +346,7 @@ def search(request):
     return render(request, 'main/search.html', locals())
 
 
-@cache_page(60 * 60 * 24)
+#@cache_page(60 * 60 * 24)
 def new_calls_old(request):
     t1 = time.time()
 
@@ -399,7 +399,7 @@ def new_calls_old(request):
     return render(request, 'main/new_calls.html', locals())
 
 
-@cache_page(60 * 60 * 24)
+#@cache_page(60 * 60 * 24)
 def new_calls(request):
     t1 = time.time()
 
@@ -424,7 +424,7 @@ def new_calls(request):
     return render(request, 'main/new_calls.html', locals())
 
 
-@cache_page(60 * 60 * 24)
+#@cache_page(60 * 60 * 24)
 def max_qso(request):
     t1 = time.time()
 
@@ -501,7 +501,7 @@ def tv(request):
     return render(request, 'tvplayer.html', locals())
 
 
-@cache_page(60 * 60 * 24)
+#@cache_page(60 * 60 * 24)
 def statistics(request):
     t1 = time.time()  # Первая отсечка времени (для обсчета времени, затраченного на операцию "статистика")
 
@@ -1327,7 +1327,7 @@ def statistics(request):
     return render(request, 'main/statistics.html', locals())
 
 
-@cache_page(60 * 60 * 24)
+#@cache_page(60 * 60 * 24)
 def qso_period(request):
 
     t1 = time.time()
@@ -2196,7 +2196,7 @@ def unruly_passengers_csv(request):
     return response'''
 
 
-@cache_page(60 * 60 * 24)
+#@cache_page(60 * 60 * 24)
 def call_allbands(request):
     t1 = time.time()
 
@@ -2254,7 +2254,7 @@ def call_allbands(request):
     return render(request, 'main/call_allbands.html', locals())
 
 
-@cache_page(60 * 60 * 24)
+#@cache_page(60 * 60 * 24)
 def call_allmode(request):
     t1 = time.time()
 
@@ -2313,7 +2313,7 @@ def call_allmode(request):
     return render(request, 'main/call_allmode.html', locals())
 
 
-@cache_page(60 * 60 * 24)
+#@cache_page(60 * 60 * 24)
 def call_allbands_mode(request):
     t1 = time.time()
 
