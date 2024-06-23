@@ -399,7 +399,7 @@ def new_calls_old(request):
     return render(request, 'main/new_calls.html', locals())
 
 
-#@cache_page(60 * 60 * 24)
+#@cache_page(60 * 2)
 def new_calls(request):
     t1 = time.time()
 
@@ -424,7 +424,7 @@ def new_calls(request):
     return render(request, 'main/new_calls.html', locals())
 
 
-#@cache_page(60 * 60 * 24)
+#@cache_page(60)
 def max_qso(request):
     t1 = time.time()
 
@@ -501,7 +501,7 @@ def tv(request):
     return render(request, 'tvplayer.html', locals())
 
 
-#@cache_page(60 * 60 * 24)
+# @cache_page(60 * 10)
 def statistics(request):
     t1 = time.time()  # Первая отсечка времени (для обсчета времени, затраченного на операцию "статистика")
 
@@ -1327,7 +1327,7 @@ def statistics(request):
     return render(request, 'main/statistics.html', locals())
 
 
-#@cache_page(60 * 60 * 24)
+# @cache_page(60 * 15)
 def qso_period(request):
 
     t1 = time.time()
