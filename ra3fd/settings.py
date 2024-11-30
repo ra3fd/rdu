@@ -182,3 +182,8 @@ STATICFILES_FINDERS = (
 #         'LOCATION': os.path.join(BASE_DIR, 'coolsite_cache'),
 #     }
 # }
+# Восстановление SECRET_KEY:
+# =================================
+# from django.core.management.utils import get_random_secret_key
+# print(get_random_secret_key())
+# =================================
