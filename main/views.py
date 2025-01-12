@@ -17,7 +17,7 @@ def base(request):
     return render(request, 'main/base.html', locals())
 
 
-#@cache_page(60 * 60)
+# @cache_page(60 * 60)
 def search(request):
 
     # win32api.LoadKeyboardLayout("00000409",1) # Переключение (?) раскладки клавиатуры
@@ -346,7 +346,7 @@ def search(request):
     return render(request, 'main/search.html', locals())
 
 
-#@cache_page(60 * 60 * 24)
+# @cache_page(60 * 60 * 24)
 def new_calls_old(request):
     t1 = time.time()
 
@@ -399,7 +399,7 @@ def new_calls_old(request):
     return render(request, 'main/new_calls.html', locals())
 
 
-#@cache_page(60 * 2)
+# @cache_page(60 * 2)
 def new_calls(request):
     t1 = time.time()
 
@@ -424,7 +424,7 @@ def new_calls(request):
     return render(request, 'main/new_calls.html', locals())
 
 
-#@cache_page(60)
+# @cache_page(60)
 def max_qso(request):
     t1 = time.time()
 
@@ -1362,6 +1362,7 @@ def qso_period(request):
     dtc2022 = []
     dtc2023 = []
     dtc2024 = []
+    dtc2025 = []
 
     q_diff = Entry.objects.all()  # Список QSO
     dtf1994 = q_diff.filter(datetime__year='1994')
@@ -1395,6 +1396,7 @@ def qso_period(request):
     dtf2022 = q_diff.filter(datetime__year='2022')
     dtf2023 = q_diff.filter(datetime__year='2023')
     dtf2024 = q_diff.filter(datetime__year='2024')
+    dtf2025 = q_diff.filter(datetime__year='2025')
 
     for entry in dtf1994:
         if entry.callsign not in dtc1994:
@@ -1702,6 +1704,22 @@ def qso_period(request):
             dtc2024.append(entry.callsign)
     dtcl_2024 = len(dtc2024)
 
+    for entry in dtf2025:
+        if entry.callsign not in dtc1994 and entry.callsign not in dtc1995 and entry.callsign not in dtc1996 \
+                and entry.callsign not in dtc1997 and entry.callsign not in dtc1998 and entry.callsign not in dtc1999 \
+                and entry.callsign not in dtc2000 and entry.callsign not in dtc2001 and entry.callsign not in dtc2002 \
+                and entry.callsign not in dtc2003 and entry.callsign not in dtc2004 and entry.callsign not in dtc2005 \
+                and entry.callsign not in dtc2006 and entry.callsign not in dtc2006 and entry.callsign not in dtc2007 \
+                and entry.callsign not in dtc2008 and entry.callsign not in dtc2009 and entry.callsign not in dtc2010 \
+                and entry.callsign not in dtc2011 and entry.callsign not in dtc2012 and entry.callsign not in dtc2013 \
+                and entry.callsign not in dtc2014 and entry.callsign not in dtc2015 and entry.callsign not in dtc2016 \
+                and entry.callsign not in dtc2017 and entry.callsign not in dtc2018 and entry.callsign not in dtc2019 \
+                and entry.callsign not in dtc2020 and entry.callsign not in dtc2021 and entry.callsign not in dtc2022 \
+                and entry.callsign not in dtc2023 and entry.callsign not in dtc2024 and entry.callsign not in dtc2025:
+            dtc2025.append(entry.callsign)
+    dtcl_2025 = len(dtc2025)
+
+
     all_count = q_diff.count()
 
     dty = []
@@ -1749,6 +1767,7 @@ def qso_period(request):
     dty2022 = dty.count('2022')
     dty2023 = dty.count('2023')
     dty2024 = dty.count('2024')
+    dty2025 = dty.count('2025')
 
     if dty1994 != 0:
         procent_ncalls_1994 = str(round(float(dtcl_1994) / float(dty1994) * 100, 1))
@@ -1812,6 +1831,10 @@ def qso_period(request):
         procent_ncalls_2023 = str(round(float(dtcl_2023) / float(dty2023) * 100, 1))
     if dty2024 != 0:
         procent_ncalls_2024 = str(round(float(dtcl_2024) / float(dty2024) * 100, 1))
+    if dty2025 != 0:
+        procent_ncalls_2025 = str(round(float(dtcl_2025) / float(dty2025) * 100, 1))
+
+
 
     dtm1 = dtm.count('1')
     dtm2 = dtm.count('2')
@@ -2196,7 +2219,7 @@ def unruly_passengers_csv(request):
     return response'''
 
 
-#@cache_page(60 * 60 * 24)
+# @cache_page(60 * 60 * 24)
 def call_allbands(request):
     t1 = time.time()
 
@@ -2254,7 +2277,7 @@ def call_allbands(request):
     return render(request, 'main/call_allbands.html', locals())
 
 
-#@cache_page(60 * 60 * 24)
+# @cache_page(60 * 60 * 24)
 def call_allmode(request):
     t1 = time.time()
 
@@ -2313,7 +2336,7 @@ def call_allmode(request):
     return render(request, 'main/call_allmode.html', locals())
 
 
-#@cache_page(60 * 60 * 24)
+# @cache_page(60 * 60 * 24)
 def call_allbands_mode(request):
     t1 = time.time()
 
