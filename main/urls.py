@@ -13,4 +13,5 @@ urlpatterns = [
     path('call_allbands/', views.call_allbands, name='call_allbands'),
     path('call_allmode/', views.call_allmode, name='call_allmode'),
     path('call_allbands_mode/', views.call_allbands_mode, name='call_allbands_mode'),
+    path('renew/', views.renew, name='renew'),
 ]

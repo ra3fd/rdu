@@ -1,4 +1,4 @@
-
+from django.db import connection
 from django.shortcuts import render
 
 
@@ -1719,7 +1719,6 @@ def qso_period(request):
             dtc2025.append(entry.callsign)
     dtcl_2025 = len(dtc2025)
 
-
     all_count = q_diff.count()
 
     dty = []
@@ -1833,8 +1832,6 @@ def qso_period(request):
         procent_ncalls_2024 = str(round(float(dtcl_2024) / float(dty2024) * 100, 1))
     if dty2025 != 0:
         procent_ncalls_2025 = str(round(float(dtcl_2025) / float(dty2025) * 100, 1))
-
-
 
     dtm1 = dtm.count('1')
     dtm2 = dtm.count('2')
@@ -2449,3 +2446,19 @@ def call_allbands_mode(request):
     date_max = datetime.datetime.now()
 
     return render(request, 'main/call_allbands_mode.html', locals())
+
+
+# Обновление базы basic.txt
+def renew(request):
+
+    Entry.truncate()
+
+    f = open('media/static/basic_for_psql.txt').read().split('\n')
+    for i in range(len(f) - 1):
+        g = f[i].split(';')
+
+        with connection.cursor() as cursor:
+            cursor.execute("INSERT INTO main_entry (id, callsign, band, mode, country, datetime) VALUES (%s, %s, %s, %s, %s, %s)",
+                                                       (g[0], g[1], g[2], g[3], g[4], g[5]))
+
+    return render(request, 'main/base.html', locals())

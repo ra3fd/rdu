@@ -1,5 +1,5 @@
 
-from django.db import models
+from django.db import models, connection
 
 
 class Entry(models.Model):
@@ -16,6 +16,11 @@ class Entry(models.Model):
     class Meta:
         ordering = ('-band', '-datetime')
 
+    @classmethod
+    def truncate(cls):
+        with connection.cursor() as cursor:
+            cursor.execute('TRUNCATE TABLE "{0}" CASCADE'.format(cls._meta.db_table))
+
 
 class Cty(models.Model):
 
@@ -31,3 +36,8 @@ class Cty(models.Model):
 
     def __unicode__(self):
         return self.cty
+
+    @classmethod
+    def truncate(cls):
+        with connection.cursor() as cursor:
+            cursor.execute('TRUNCATE TABLE "{0}" CASCADE'.format(cls._meta.db_table))
