@@ -2459,6 +2459,6 @@ def renew(request):
 
         with connection.cursor() as cursor:
             cursor.execute("INSERT INTO main_entry (id, callsign, band, mode, country, datetime) VALUES (%s, %s, %s, %s, %s, %s)",
-                                                       (g[0], g[1], g[2], g[3], g[4], g[5]))
+                           (g[0], g[1], g[2], g[3], g[4], g[5]))
 
     return render(request, 'main/base.html', locals())

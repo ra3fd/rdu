@@ -32,7 +32,7 @@ class Cty(models.Model):
     lon = models.CharField(max_length=10, blank=True, null=True)
     loctime = models.CharField(max_length=9, blank=True, null=True)
     dxcc = models.CharField(max_length=6, blank=True, null=True)
-    pref = models.CharField(max_length=50000, blank=True, null=True)
+    pref = models.CharField(max_length=150000, blank=True, null=True)
 
     def __unicode__(self):
         return self.cty
