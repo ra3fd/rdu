@@ -6,6 +6,7 @@ import re
 import random
 import datetime
 import time
+import shutil
 from django.views.decorators.cache import cache_page
 # import win32api
 
@@ -13,11 +14,12 @@ from .models import Entry
 from .models import Cty
 
 
+
 def base(request):
     return render(request, 'main/base.html', locals())
 
 
-# @cache_page(60 * 60)
+# #@cache_page(60 * 60)
 def search(request):
 
     # win32api.LoadKeyboardLayout("00000409",1) # Переключение (?) раскладки клавиатуры
@@ -346,7 +348,7 @@ def search(request):
     return render(request, 'main/search.html', locals())
 
 
-# @cache_page(60 * 60 * 24)
+# #@cache_page(60 * 60 * 24)
 def new_calls_old(request):
     t1 = time.time()
 
@@ -399,7 +401,7 @@ def new_calls_old(request):
     return render(request, 'main/new_calls.html', locals())
 
 
-# @cache_page(60 * 2)
+# @cache_page(60 * 60 * 24)
 def new_calls(request):
     t1 = time.time()
 
@@ -501,7 +503,7 @@ def tv(request):
     return render(request, 'tvplayer.html', locals())
 
 
-# @cache_page(60 * 10)
+# @cache_page(60 * 60 * 24)
 def statistics(request):
     t1 = time.time()  # Первая отсечка времени (для обсчета времени, затраченного на операцию "статистика")
 
@@ -1327,7 +1329,7 @@ def statistics(request):
     return render(request, 'main/statistics.html', locals())
 
 
-# @cache_page(60 * 15)
+#@cache_page(60 * 60 * 24)
 def qso_period(request):
 
     t1 = time.time()
@@ -2333,7 +2335,7 @@ def call_allmode(request):
     return render(request, 'main/call_allmode.html', locals())
 
 
-# @cache_page(60 * 60 * 24)
+#@cache_page(60 * 60 * 24)
 def call_allbands_mode(request):
     t1 = time.time()
 
@@ -2449,16 +2451,213 @@ def call_allbands_mode(request):
 
 
 # Обновление базы basic.txt
-def renew(request):
+# basic.txt также возможно загрузить непосредственно в postgresql
+
+'''def renew(request):
 
     Entry.truncate()
 
     f = open('media/static/basic_for_psql.txt').read().split('\n')
     for i in range(len(f) - 1):
-        g = f[i].split(';')
+        g = f[i].split(' ')
 
         with connection.cursor() as cursor:
             cursor.execute("INSERT INTO main_entry (id, callsign, band, mode, country, datetime) VALUES (%s, %s, %s, %s, %s, %s)",
                            (g[0], g[1], g[2], g[3], g[4], g[5]))
 
     return render(request, 'main/base.html', locals())
+'''
+
+
+def renew(request):
+
+    Entry.truncate()
+
+    shutil.copy('/mnt/6C04657104653F68/basic.txt', '/home/sk/basic.txt')
+    shutil.copy('/mnt/6C04657104653F68/basic.txt', 'media/static/basic.txt')
+
+    f = open('media/static/basic.txt').read().split('\n')
+    for i in range(len(f) - 1):
+        g = f[i].split(' ')
+
+        with connection.cursor() as cursor:
+            cursor.execute("INSERT INTO main_entry (callsign, band, mode, country, datetime) VALUES (%s, %s, %s, %s, %s)",
+                           (g[0], g[-4], g[-1], ' ', g[-3] + ' ' + g[-2]))
+
+    return render(request, 'main/base.html', locals())
+
+
+def statistics1(request):
+
+    t1 = time.time()
+
+    f = open('media/static/basic.txt').read().split('\n')
+    all_count = 0
+    qso_160cw = qso_80cw = qso_40cw = qso_30cw = qso_20cw = qso_17cw = qso_15cw = qso_12cw = qso_10cw = 0
+    qso_160ssb = qso_80ssb = qso_40ssb = qso_30ssb = qso_20ssb = qso_17ssb = qso_15ssb = qso_12ssb = qso_10ssb = 0
+    qso_160rtty = qso_80rtty = qso_40rtty = qso_30rtty = qso_20rtty = qso_17rtty = qso_15rtty = qso_12rtty = qso_10rtty = 0
+    qso_160psk = qso_80psk = qso_40psk = qso_30psk = qso_20psk = qso_17psk = qso_15psk = qso_12psk = qso_10psk = 0
+    qso_160ft4 = qso_80ft4 = qso_40ft4 = qso_30ft4 = qso_20ft4 = qso_17ft4 = qso_15ft4 = qso_12ft4 = qso_10ft4 = 0
+    qso_160ft8 = qso_80ft8 = qso_40ft8 = qso_30ft8 = qso_20ft8 = qso_17ft8 = qso_15ft8 = qso_12ft8 = qso_10ft8 = 0
+    total_160S = total_80S = total_40S = total_30S = total_20S = total_17S = total_15S = total_12S = total_10S = 0
+
+    total_cws = total_ssbs = total_rttys = total_psks = total_ft4s = total_ft8s = 0
+
+    for i in range(len(f)):
+        all_count += 1
+
+        g = f[0].split()
+        log_start = g[2]
+
+        if ' 2 ' in f[i] and ' CW' in f[i]:
+            qso_160cw += 1
+        if ' 4 ' in f[i] and ' CW' in f[i]:
+            qso_80cw += 1
+        if ' 7 ' in f[i] and ' CW' in f[i]:                
+            qso_40cw += 1
+        if ' 10 ' in f[i] and ' CW' in f[i]:
+            qso_30cw += 1
+        if ' 14 ' in f[i] and ' CW' in f[i]:
+            qso_20cw += 1
+        if ' 18 ' in f[i] and ' CW' in f[i]:
+            qso_17cw += 1
+        if ' 21 ' in f[i] and ' CW' in f[i]:
+            qso_15cw += 1
+        if ' 25 ' in f[i] and ' CW' in f[i]:
+            qso_12cw += 1
+        if ' 28 ' in f[i] and ' CW' in f[i]:
+            qso_10cw += 1
+            
+        if ' 2 ' in f[i] and ' SSB' in f[i]:
+            qso_160ssb += 1
+        if ' 4 ' in f[i] and ' SSB' in f[i]:
+            qso_80ssb += 1
+        if ' 7 ' in f[i] and ' SSB' in f[i]:                
+            qso_40ssb += 1
+        if ' 14 ' in f[i] and ' SSB' in f[i]:
+            qso_20ssb += 1
+        if ' 18 ' in f[i] and ' SSB' in f[i]:
+            qso_17ssb += 1
+        if ' 21 ' in f[i] and ' SSB' in f[i]:
+            qso_15ssb += 1
+        if ' 25 ' in f[i] and ' SSB' in f[i]:
+            qso_12ssb += 1
+        if ' 28 ' in f[i] and ' SSB' in f[i]:
+            qso_10ssb += 1
+
+        if ' 2 ' in f[i] and 'RTTY' in f[i]:
+            qso_160rtty += 1
+        if ' 4 ' in f[i] and 'RTTY' in f[i]:
+            qso_80rtty += 1
+        if ' 7 ' in f[i] and 'RTTY' in f[i]:
+            qso_40rtty += 1
+        if ' 10 ' in f[i] and 'RTTY' in f[i]:
+            qso_30rtty += 1
+        if ' 14 ' in f[i] and 'RTTY' in f[i]:
+            qso_20rtty += 1
+        if ' 18 ' in f[i] and 'RTTY' in f[i]:
+            qso_17rtty += 1
+        if ' 21 ' in f[i] and 'RTTY' in f[i]:
+            qso_15rtty += 1
+        if ' 25 ' in f[i] and 'RTTY' in f[i]:
+            qso_12rtty += 1
+        if ' 28 ' in f[i] and 'RTTY' in f[i]:
+            qso_10rtty += 1
+            
+        if ' 2 ' in f[i] and ' PSK' in f[i]:
+            qso_160psk += 1
+        if ' 4 ' in f[i] and ' PSK' in f[i]:
+            qso_80psk += 1
+        if ' 7 ' in f[i] and ' PSK' in f[i]:                
+            qso_40psk += 1
+        if ' 10 ' in f[i] and ' PSK' in f[i]:
+            qso_30psk += 1
+        if ' 14 ' in f[i] and ' PSK' in f[i]:
+            qso_20psk += 1
+        if ' 18 ' in f[i] and ' PSK' in f[i]:
+            qso_17psk += 1
+        if ' 21 ' in f[i] and ' PSK' in f[i]:
+            qso_15psk += 1
+        if ' 25 ' in f[i] and ' PSK' in f[i]:
+            qso_12psk += 1
+        if ' 28 ' in f[i] and ' PSK' in f[i]:
+            qso_10psk += 1
+            
+        if ' 2 ' in f[i] and 'MFSK' in f[i]:
+            qso_160ft4 += 1
+        if ' 4 ' in f[i] and 'MFSK' in f[i]:
+            qso_80ft4 += 1
+        if ' 7 ' in f[i] and 'MFSK' in f[i]:                
+            qso_40ft4 += 1
+        if ' 10 ' in f[i] and 'MFSK' in f[i]:
+            qso_30ft4 += 1
+        if ' 14 ' in f[i] and 'MFSK' in f[i]:
+            qso_20ft4 += 1
+        if ' 18 ' in f[i] and 'MFSK' in f[i]:
+            qso_17ft4 += 1
+        if ' 21 ' in f[i] and 'MFSK' in f[i]:
+            qso_15ft4 += 1
+        if ' 25 ' in f[i] and 'MFSK' in f[i]:
+            qso_12ft4 += 1
+        if ' 28 ' in f[i] and 'MFSK' in f[i]:
+            qso_10ft4 += 1
+            
+        if ' 2 ' in f[i] and ' FT8' in f[i]:
+            qso_160ft8 += 1
+        if ' 4 ' in f[i] and ' FT8' in f[i]:
+            qso_80ft8 += 1
+        if ' 7 ' in f[i] and ' FT8' in f[i]:                
+            qso_40ft8 += 1
+        if ' 10 ' in f[i] and ' FT8' in f[i]:
+            qso_30ft8 += 1
+        if ' 14 ' in f[i] and ' FT8' in f[i]:
+            qso_20ft8 += 1
+        if ' 18 ' in f[i] and ' FT8' in f[i]:
+            qso_17ft8 += 1
+        if ' 21 ' in f[i] and ' FT8' in f[i]:
+            qso_15ft8 += 1
+        if ' 25 ' in f[i] and ' FT8' in f[i]:
+            qso_12ft8 += 1
+        if ' 28 ' in f[i] and ' FT8' in f[i]:
+            qso_10ft8 += 1
+
+        if ' 2 ' in f[i]:
+            total_160S += 1
+        if ' 4 ' in f[i]:
+            total_80S += 1
+        if ' 7 ' in f[i]:
+            total_40S += 1
+        if ' 10 ' in f[i]:
+            total_30S += 1
+        if ' 14 ' in f[i]:
+            total_20S += 1
+        if ' 18 ' in f[i]:
+            total_17S += 1
+        if ' 21 ' in f[i]:
+            total_15S += 1
+        if ' 25 ' in f[i]:
+            total_12S += 1
+        if ' 28 ' in f[i]:
+            total_10S += 1
+
+        if ' CW' in f[i]:
+            total_cws += 1
+        if ' SSB' in f[i]:
+            total_ssbs += 1
+        if ' RTTY' in f[i]:
+            total_rttys += 1
+        if ' PSK' in f[i]:
+            total_psks += 1
+        if ' MFSK' in f[i]:
+            total_ft4s += 1
+        if ' FT8' in f[i]:
+            total_ft8s += 1
+
+    t2 = time.time()
+    tt = str(t2 - t1)[:5]
+    date_stat = datetime.datetime.now()
+
+    h = f[all_count - 1].split()
+    log_update = h[2]
+
+    return render(request, 'main/statistics1.html', locals())
