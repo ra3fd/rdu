@@ -13,9 +13,6 @@ from django.views.decorators.cache import cache_page
 from .models import Entry
 from .models import Cty
 
-global all_count
-all_count = 11111
-
 
 def base(request):
     return render(request, 'main/base.html', locals())
@@ -1265,9 +1262,43 @@ def statistics(request):
 
 
 # @cache_page(60 * 60 * 24)
-def qso_period(request):
+def period(request):
 
     t1 = time.time()
+
+    dtf1994 = Entry.objects.filter(datetime__year='1994')
+    dtf1995 = Entry.objects.filter(datetime__year='1995')
+    dtf1996 = Entry.objects.filter(datetime__year='1996')
+    dtf1997 = Entry.objects.filter(datetime__year='1997')
+    dtf1998 = Entry.objects.filter(datetime__year='1998')
+    dtf1999 = Entry.objects.filter(datetime__year='1999')
+    dtf2000 = Entry.objects.filter(datetime__year='2000')
+    dtf2001 = Entry.objects.filter(datetime__year='2001')
+    dtf2002 = Entry.objects.filter(datetime__year='2002')
+    dtf2003 = Entry.objects.filter(datetime__year='2003')
+    dtf2004 = Entry.objects.filter(datetime__year='2004')
+    dtf2005 = Entry.objects.filter(datetime__year='2005')
+    dtf2006 = Entry.objects.filter(datetime__year='2006')
+    dtf2007 = Entry.objects.filter(datetime__year='2007')
+    dtf2008 = Entry.objects.filter(datetime__year='2008')
+    dtf2009 = Entry.objects.filter(datetime__year='2009')
+    dtf2010 = Entry.objects.filter(datetime__year='2010')
+    dtf2011 = Entry.objects.filter(datetime__year='2011')
+    dtf2012 = Entry.objects.filter(datetime__year='2012')
+    dtf2013 = Entry.objects.filter(datetime__year='2013')
+    dtf2014 = Entry.objects.filter(datetime__year='2014')
+    dtf2015 = Entry.objects.filter(datetime__year='2015')
+    dtf2016 = Entry.objects.filter(datetime__year='2016')
+    dtf2017 = Entry.objects.filter(datetime__year='2017')
+    dtf2018 = Entry.objects.filter(datetime__year='2018')
+    dtf2019 = Entry.objects.filter(datetime__year='2019')
+    dtf2020 = Entry.objects.filter(datetime__year='2020')
+    dtf2021 = Entry.objects.filter(datetime__year='2021')
+    dtf2022 = Entry.objects.filter(datetime__year='2022')
+    dtf2023 = Entry.objects.filter(datetime__year='2023')
+    dtf2024 = Entry.objects.filter(datetime__year='2024')
+    dtf2025 = Entry.objects.filter(datetime__year='2025')
+
     dtc1994 = []
     dtc1995 = []
     dtc1996 = []
@@ -1301,44 +1332,10 @@ def qso_period(request):
     dtc2024 = []
     dtc2025 = []
 
-    q_diff = Entry.objects.all()  # Список QSO
-    dtf1994 = q_diff.filter(datetime__year='1994')
-    dtf1995 = q_diff.filter(datetime__year='1995')
-    dtf1996 = q_diff.filter(datetime__year='1996')
-    dtf1997 = q_diff.filter(datetime__year='1997')
-    dtf1998 = q_diff.filter(datetime__year='1998')
-    dtf1999 = q_diff.filter(datetime__year='1999')
-    dtf2000 = q_diff.filter(datetime__year='2000')
-    dtf2001 = q_diff.filter(datetime__year='2001')
-    dtf2002 = q_diff.filter(datetime__year='2002')
-    dtf2003 = q_diff.filter(datetime__year='2003')
-    dtf2004 = q_diff.filter(datetime__year='2004')
-    dtf2005 = q_diff.filter(datetime__year='2005')
-    dtf2006 = q_diff.filter(datetime__year='2006')
-    dtf2007 = q_diff.filter(datetime__year='2007')
-    dtf2008 = q_diff.filter(datetime__year='2008')
-    dtf2009 = q_diff.filter(datetime__year='2009')
-    dtf2010 = q_diff.filter(datetime__year='2010')
-    dtf2011 = q_diff.filter(datetime__year='2011')
-    dtf2012 = q_diff.filter(datetime__year='2012')
-    dtf2013 = q_diff.filter(datetime__year='2013')
-    dtf2014 = q_diff.filter(datetime__year='2014')
-    dtf2015 = q_diff.filter(datetime__year='2015')
-    dtf2016 = q_diff.filter(datetime__year='2016')
-    dtf2017 = q_diff.filter(datetime__year='2017')
-    dtf2018 = q_diff.filter(datetime__year='2018')
-    dtf2019 = q_diff.filter(datetime__year='2019')
-    dtf2020 = q_diff.filter(datetime__year='2020')
-    dtf2021 = q_diff.filter(datetime__year='2021')
-    dtf2022 = q_diff.filter(datetime__year='2022')
-    dtf2023 = q_diff.filter(datetime__year='2023')
-    dtf2024 = q_diff.filter(datetime__year='2024')
-    dtf2025 = q_diff.filter(datetime__year='2025')
-
     for entry in dtf1994:
         if entry.callsign not in dtc1994:
             dtc1994.append(entry.callsign)
-    dtcl_1994 = len(dtc1994)
+    dtcl_1994 = len(set(dtc1994))
 
     for entry in dtf1995:
         if entry.callsign not in dtc1994 and entry.callsign not in dtc1995:
@@ -1656,14 +1653,14 @@ def qso_period(request):
             dtc2025.append(entry.callsign)
     dtcl_2025 = len(dtc2025)
 
-    all_count = q_diff.count()
+    all_count = Entry.objects.all().count()
 
     dty = []
     dtm = []
     dtt = []
     diff_calls_period = []
 
-    for entry in q_diff:
+    for entry in Entry.objects.all():
 
         dty.append(str(entry.datetime.year))
         dtm.append(str(entry.datetime.month))
@@ -1812,7 +1809,7 @@ def qso_period(request):
     tt = str(t2 - t1)[:5]
     date_hour = datetime.datetime.now()
 
-    return render(request, 'main/qso_period.html', locals())
+    return render(request, 'main/period.html', locals())
 
 
 def rand(request):
@@ -2415,428 +2412,3 @@ def renew(request):
                            (g[0], g[-4], g[-1], ' ', g[-3] + ' ' + g[-2]))
 
     return render(request, 'main/base.html', locals())
-
-
-def statistics1(request):
-
-    t1 = time.time()
-
-    diff_calls_160cw = []  # -- Различных позывных на диапазоне 160, cw
-    diff_calls_80cw = []
-    diff_calls_40cw = []
-    diff_calls_30cw = []
-    diff_calls_20cw = []
-    diff_calls_17cw = []
-    diff_calls_15cw = []
-    diff_calls_12cw = []
-    diff_calls_10cw = []
-    diff_cws = []
-
-    f = open('media/static/basic.txt').read().split('\n')
-    all_count = 0
-    qso_160cw = qso_80cw = qso_40cw = qso_30cw = qso_20cw = qso_17cw = qso_15cw = qso_12cw = qso_10cw = 0
-    qso_160ssb = qso_80ssb = qso_40ssb = qso_30ssb = qso_20ssb = qso_17ssb = qso_15ssb = qso_12ssb = qso_10ssb = 0
-    qso_160rtty = qso_80rtty = qso_40rtty = qso_30rtty = qso_20rtty = qso_17rtty = qso_15rtty = qso_12rtty = qso_10rtty = 0
-    qso_160psk = qso_80psk = qso_40psk = qso_30psk = qso_20psk = qso_17psk = qso_15psk = qso_12psk = qso_10psk = 0
-    qso_160ft4 = qso_80ft4 = qso_40ft4 = qso_30ft4 = qso_20ft4 = qso_17ft4 = qso_15ft4 = qso_12ft4 = qso_10ft4 = 0
-    qso_160ft8 = qso_80ft8 = qso_40ft8 = qso_30ft8 = qso_20ft8 = qso_17ft8 = qso_15ft8 = qso_12ft8 = qso_10ft8 = 0
-    total_160S = total_80S = total_40S = total_30S = total_20S = total_17S = total_15S = total_12S = total_10S = 0
-
-    total_cws = total_ssbs = total_rttys = total_psks = total_ft4s = total_ft8s = 0
-
-    for i in range(len(f)):
-        all_count += 1
-
-        g = f[0].split()
-        log_start = g[2]
-
-        if ' 2 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_160cw.append(g[0])
-            qso_160cw += 1
-
-        if ' 4 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_80cw.append(g[0])
-            qso_80cw += 1
-
-        if ' 7 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_40cw.append(g[0])
-            qso_40cw += 1
-
-        if ' 10 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_30cw.append(g[0])
-            qso_30cw += 1
-
-        if ' 14 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_20cw.append(g[0])
-            qso_20cw += 1
-
-        if ' 18 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_17cw.append(g[0])
-            qso_17cw += 1
-
-        if ' 21 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_15cw.append(g[0])
-            qso_15cw += 1
-
-        if ' 25 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_12cw.append(g[0])
-            qso_12cw += 1
-
-        if ' 28 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_10cw.append(g[0])
-            qso_10cw += 1
-            
-        if ' 2 ' in f[i] and ' SSB' in f[i]:
-            qso_160ssb += 1
-        if ' 4 ' in f[i] and ' SSB' in f[i]:
-            qso_80ssb += 1
-        if ' 7 ' in f[i] and ' SSB' in f[i]:                
-            qso_40ssb += 1
-        if ' 14 ' in f[i] and ' SSB' in f[i]:
-            qso_20ssb += 1
-        if ' 18 ' in f[i] and ' SSB' in f[i]:
-            qso_17ssb += 1
-        if ' 21 ' in f[i] and ' SSB' in f[i]:
-            qso_15ssb += 1
-        if ' 25 ' in f[i] and ' SSB' in f[i]:
-            qso_12ssb += 1
-        if ' 28 ' in f[i] and ' SSB' in f[i]:
-            qso_10ssb += 1
-
-        if ' 2 ' in f[i] and 'RTTY' in f[i]:
-            qso_160rtty += 1
-        if ' 4 ' in f[i] and 'RTTY' in f[i]:
-            qso_80rtty += 1
-        if ' 7 ' in f[i] and 'RTTY' in f[i]:
-            qso_40rtty += 1
-        if ' 10 ' in f[i] and 'RTTY' in f[i]:
-            qso_30rtty += 1
-        if ' 14 ' in f[i] and 'RTTY' in f[i]:
-            qso_20rtty += 1
-        if ' 18 ' in f[i] and 'RTTY' in f[i]:
-            qso_17rtty += 1
-        if ' 21 ' in f[i] and 'RTTY' in f[i]:
-            qso_15rtty += 1
-        if ' 25 ' in f[i] and 'RTTY' in f[i]:
-            qso_12rtty += 1
-        if ' 28 ' in f[i] and 'RTTY' in f[i]:
-            qso_10rtty += 1
-            
-        if ' 2 ' in f[i] and ' PSK' in f[i]:
-            qso_160psk += 1
-        if ' 4 ' in f[i] and ' PSK' in f[i]:
-            qso_80psk += 1
-        if ' 7 ' in f[i] and ' PSK' in f[i]:                
-            qso_40psk += 1
-        if ' 10 ' in f[i] and ' PSK' in f[i]:
-            qso_30psk += 1
-        if ' 14 ' in f[i] and ' PSK' in f[i]:
-            qso_20psk += 1
-        if ' 18 ' in f[i] and ' PSK' in f[i]:
-            qso_17psk += 1
-        if ' 21 ' in f[i] and ' PSK' in f[i]:
-            qso_15psk += 1
-        if ' 25 ' in f[i] and ' PSK' in f[i]:
-            qso_12psk += 1
-        if ' 28 ' in f[i] and ' PSK' in f[i]:
-            qso_10psk += 1
-            
-        if ' 2 ' in f[i] and 'MFSK' in f[i]:
-            qso_160ft4 += 1
-        if ' 4 ' in f[i] and 'MFSK' in f[i]:
-            qso_80ft4 += 1
-        if ' 7 ' in f[i] and 'MFSK' in f[i]:                
-            qso_40ft4 += 1
-        if ' 10 ' in f[i] and 'MFSK' in f[i]:
-            qso_30ft4 += 1
-        if ' 14 ' in f[i] and 'MFSK' in f[i]:
-            qso_20ft4 += 1
-        if ' 18 ' in f[i] and 'MFSK' in f[i]:
-            qso_17ft4 += 1
-        if ' 21 ' in f[i] and 'MFSK' in f[i]:
-            qso_15ft4 += 1
-        if ' 25 ' in f[i] and 'MFSK' in f[i]:
-            qso_12ft4 += 1
-        if ' 28 ' in f[i] and 'MFSK' in f[i]:
-            qso_10ft4 += 1
-            
-        if ' 2 ' in f[i] and ' FT8' in f[i]:
-            qso_160ft8 += 1
-        if ' 4 ' in f[i] and ' FT8' in f[i]:
-            qso_80ft8 += 1
-        if ' 7 ' in f[i] and ' FT8' in f[i]:                
-            qso_40ft8 += 1
-        if ' 10 ' in f[i] and ' FT8' in f[i]:
-            qso_30ft8 += 1
-        if ' 14 ' in f[i] and ' FT8' in f[i]:
-            qso_20ft8 += 1
-        if ' 18 ' in f[i] and ' FT8' in f[i]:
-            qso_17ft8 += 1
-        if ' 21 ' in f[i] and ' FT8' in f[i]:
-            qso_15ft8 += 1
-        if ' 25 ' in f[i] and ' FT8' in f[i]:
-            qso_12ft8 += 1
-        if ' 28 ' in f[i] and ' FT8' in f[i]:
-            qso_10ft8 += 1
-
-        if ' 2 ' in f[i]:
-            total_160S += 1
-        if ' 4 ' in f[i]:
-            total_80S += 1
-        if ' 7 ' in f[i]:
-            total_40S += 1
-        if ' 10 ' in f[i]:
-            total_30S += 1
-        if ' 14 ' in f[i]:
-            total_20S += 1
-        if ' 18 ' in f[i]:
-            total_17S += 1
-        if ' 21 ' in f[i]:
-            total_15S += 1
-        if ' 25 ' in f[i]:
-            total_12S += 1
-        if ' 28 ' in f[i]:
-            total_10S += 1
-
-        if ' CW' in f[i]:
-            total_cws += 1
-        if ' SSB' in f[i]:
-            total_ssbs += 1
-        if ' RTTY' in f[i]:
-            total_rttys += 1
-        if ' PSK' in f[i]:
-            total_psks += 1
-        if ' MFSK' in f[i]:
-            total_ft4s += 1
-        if ' FT8' in f[i]:
-            total_ft8s += 1
-
-    len_160cw_diff = len(set(diff_calls_160cw))
-    len_80cw_diff = len(set(diff_calls_80cw))
-    len_400cw_diff = len(set(diff_calls_40cw))
-    len_30cw_diff = len(set(diff_calls_30cw))
-    len_20cw_diff = len(set(diff_calls_20cw))
-    len_17cw_diff = len(set(diff_calls_17cw))
-    len_15cw_diff = len(set(diff_calls_15cw))
-    len_12cw_diff = len(set(diff_calls_12cw))
-    len_10cw_diff = len(set(diff_calls_10cw))
-
-    t2 = time.time()
-    tt = str(t2 - t1)[:5]
-    date_stat = datetime.datetime.now()
-
-    h = f[all_count - 1].split()
-    log_update = h[2]
-
-    return render(request, 'main/statistics1.html', locals())
-
-
-def qso_160cw_d(request):
-    t1 = time.time()
-
-    diff_calls_160cw = []  # -- Различных позывных на диапазоне 160, cw
-    diff_calls_80cw = []
-    diff_calls_40cw = []
-    diff_calls_30cw = []
-    diff_calls_20cw = []
-    diff_calls_17cw = []
-    diff_calls_15cw = []
-    diff_calls_12cw = []
-    diff_calls_10cw = []
-    diff_cws = []
-
-    f = open('media/static/basic.txt').read().split('\n')
-    all_count = 0
-    qso_160cw = qso_80cw = qso_40cw = qso_30cw = qso_20cw = qso_17cw = qso_15cw = qso_12cw = qso_10cw = 0
-    qso_160ssb = qso_80ssb = qso_40ssb = qso_30ssb = qso_20ssb = qso_17ssb = qso_15ssb = qso_12ssb = qso_10ssb = 0
-    qso_160rtty = qso_80rtty = qso_40rtty = qso_30rtty = qso_20rtty = qso_17rtty = qso_15rtty = qso_12rtty = qso_10rtty = 0
-    qso_160psk = qso_80psk = qso_40psk = qso_30psk = qso_20psk = qso_17psk = qso_15psk = qso_12psk = qso_10psk = 0
-    qso_160ft4 = qso_80ft4 = qso_40ft4 = qso_30ft4 = qso_20ft4 = qso_17ft4 = qso_15ft4 = qso_12ft4 = qso_10ft4 = 0
-    qso_160ft8 = qso_80ft8 = qso_40ft8 = qso_30ft8 = qso_20ft8 = qso_17ft8 = qso_15ft8 = qso_12ft8 = qso_10ft8 = 0
-    total_160S = total_80S = total_40S = total_30S = total_20S = total_17S = total_15S = total_12S = total_10S = 0
-
-    total_cws = total_ssbs = total_rttys = total_psks = total_ft4s = total_ft8s = 0
-
-    for i in range(len(f)):
-        all_count += 1
-
-        g = f[0].split()
-        log_start = g[2]
-
-        if ' 2 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_160cw.append(g[0])
-            qso_160cw += 1
-
-        if ' 4 ' in f[i] and ' CW' in f[i]:
-            g = f[i].split()
-            diff_calls_80cw.append(g[0])
-            qso_80cw += 1
-
-
-        if ' 7 ' in f[i] and ' CW' in f[i]:
-            qso_40cw += 1
-
-        if ' 10 ' in f[i] and ' CW' in f[i]:
-            qso_30cw += 1
-
-        if ' 14 ' in f[i] and ' CW' in f[i]:
-            qso_20cw += 1
-
-        if ' 18 ' in f[i] and ' CW' in f[i]:
-            qso_17cw += 1
-
-        if ' 21 ' in f[i] and ' CW' in f[i]:
-            qso_15cw += 1
-
-        if ' 25 ' in f[i] and ' CW' in f[i]:
-            qso_12cw += 1
-
-        if ' 28 ' in f[i] and ' CW' in f[i]:
-            qso_10cw += 1
-
-        if ' 2 ' in f[i] and ' SSB' in f[i]:
-            qso_160ssb += 1
-        if ' 4 ' in f[i] and ' SSB' in f[i]:
-            qso_80ssb += 1
-        if ' 7 ' in f[i] and ' SSB' in f[i]:
-            qso_40ssb += 1
-        if ' 14 ' in f[i] and ' SSB' in f[i]:
-            qso_20ssb += 1
-        if ' 18 ' in f[i] and ' SSB' in f[i]:
-            qso_17ssb += 1
-        if ' 21 ' in f[i] and ' SSB' in f[i]:
-            qso_15ssb += 1
-        if ' 25 ' in f[i] and ' SSB' in f[i]:
-            qso_12ssb += 1
-        if ' 28 ' in f[i] and ' SSB' in f[i]:
-            qso_10ssb += 1
-
-        if ' 2 ' in f[i] and 'RTTY' in f[i]:
-            qso_160rtty += 1
-        if ' 4 ' in f[i] and 'RTTY' in f[i]:
-            qso_80rtty += 1
-        if ' 7 ' in f[i] and 'RTTY' in f[i]:
-            qso_40rtty += 1
-        if ' 10 ' in f[i] and 'RTTY' in f[i]:
-            qso_30rtty += 1
-        if ' 14 ' in f[i] and 'RTTY' in f[i]:
-            qso_20rtty += 1
-        if ' 18 ' in f[i] and 'RTTY' in f[i]:
-            qso_17rtty += 1
-        if ' 21 ' in f[i] and 'RTTY' in f[i]:
-            qso_15rtty += 1
-        if ' 25 ' in f[i] and 'RTTY' in f[i]:
-            qso_12rtty += 1
-        if ' 28 ' in f[i] and 'RTTY' in f[i]:
-            qso_10rtty += 1
-
-        if ' 2 ' in f[i] and ' PSK' in f[i]:
-            qso_160psk += 1
-        if ' 4 ' in f[i] and ' PSK' in f[i]:
-            qso_80psk += 1
-        if ' 7 ' in f[i] and ' PSK' in f[i]:
-            qso_40psk += 1
-        if ' 10 ' in f[i] and ' PSK' in f[i]:
-            qso_30psk += 1
-        if ' 14 ' in f[i] and ' PSK' in f[i]:
-            qso_20psk += 1
-        if ' 18 ' in f[i] and ' PSK' in f[i]:
-            qso_17psk += 1
-        if ' 21 ' in f[i] and ' PSK' in f[i]:
-            qso_15psk += 1
-        if ' 25 ' in f[i] and ' PSK' in f[i]:
-            qso_12psk += 1
-        if ' 28 ' in f[i] and ' PSK' in f[i]:
-            qso_10psk += 1
-
-        if ' 2 ' in f[i] and 'MFSK' in f[i]:
-            qso_160ft4 += 1
-        if ' 4 ' in f[i] and 'MFSK' in f[i]:
-            qso_80ft4 += 1
-        if ' 7 ' in f[i] and 'MFSK' in f[i]:
-            qso_40ft4 += 1
-        if ' 10 ' in f[i] and 'MFSK' in f[i]:
-            qso_30ft4 += 1
-        if ' 14 ' in f[i] and 'MFSK' in f[i]:
-            qso_20ft4 += 1
-        if ' 18 ' in f[i] and 'MFSK' in f[i]:
-            qso_17ft4 += 1
-        if ' 21 ' in f[i] and 'MFSK' in f[i]:
-            qso_15ft4 += 1
-        if ' 25 ' in f[i] and 'MFSK' in f[i]:
-            qso_12ft4 += 1
-        if ' 28 ' in f[i] and 'MFSK' in f[i]:
-            qso_10ft4 += 1
-
-        if ' 2 ' in f[i] and ' FT8' in f[i]:
-            qso_160ft8 += 1
-        if ' 4 ' in f[i] and ' FT8' in f[i]:
-            qso_80ft8 += 1
-        if ' 7 ' in f[i] and ' FT8' in f[i]:
-            qso_40ft8 += 1
-        if ' 10 ' in f[i] and ' FT8' in f[i]:
-            qso_30ft8 += 1
-        if ' 14 ' in f[i] and ' FT8' in f[i]:
-            qso_20ft8 += 1
-        if ' 18 ' in f[i] and ' FT8' in f[i]:
-            qso_17ft8 += 1
-        if ' 21 ' in f[i] and ' FT8' in f[i]:
-            qso_15ft8 += 1
-        if ' 25 ' in f[i] and ' FT8' in f[i]:
-            qso_12ft8 += 1
-        if ' 28 ' in f[i] and ' FT8' in f[i]:
-            qso_10ft8 += 1
-
-        if ' 2 ' in f[i]:
-            total_160S += 1
-        if ' 4 ' in f[i]:
-            total_80S += 1
-        if ' 7 ' in f[i]:
-            total_40S += 1
-        if ' 10 ' in f[i]:
-            total_30S += 1
-        if ' 14 ' in f[i]:
-            total_20S += 1
-        if ' 18 ' in f[i]:
-            total_17S += 1
-        if ' 21 ' in f[i]:
-            total_15S += 1
-        if ' 25 ' in f[i]:
-            total_12S += 1
-        if ' 28 ' in f[i]:
-            total_10S += 1
-
-        if ' CW' in f[i]:
-            total_cws += 1
-        if ' SSB' in f[i]:
-            total_ssbs += 1
-        if ' RTTY' in f[i]:
-            total_rttys += 1
-        if ' PSK' in f[i]:
-            total_psks += 1
-        if ' MFSK' in f[i]:
-            total_ft4s += 1
-        if ' FT8' in f[i]:
-            total_ft8s += 1
-
-    len_160cw_diff = len(set(diff_calls_160cw))
-    len_80cw_diff = len(set(diff_calls_80cw))
-
-    t2 = time.time()
-    tt = str(t2 - t1)[:5]
-    date_stat = datetime.datetime.now()
-
-    h = f[all_count - 1].split()
-    log_update = h[2]
-
-    return render(request, 'main/qso_160cw.html', locals())
