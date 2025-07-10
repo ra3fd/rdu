@@ -13,6 +13,8 @@ from django.views.decorators.cache import cache_page
 from .models import Entry
 from .models import Cty
 
+global all_count
+all_count = 11111
 
 
 def base(request):
@@ -675,360 +677,222 @@ def statistics(request):
             q160.append('1')
             if entry.mode == 'CW':
                 call_160cw.append('1')
-                if entry.callsign not in diff_calls_160cw:
-                    diff_calls_160cw.append(entry.callsign)
+                diff_calls_160cw.append(entry.callsign)
             elif entry.mode == 'SSB':
                 call_160ssb.append('1')
-                if entry.callsign not in diff_calls_160ssb:
-                    diff_calls_160ssb.append(entry.callsign)
+                diff_calls_160ssb.append(entry.callsign)
             elif entry.mode == 'RTTY':
                 call_160rtty.append('1')
-                if entry.callsign not in diff_calls_160rtty:
-                    diff_calls_160rtty.append(entry.callsign)
+                diff_calls_160rtty.append(entry.callsign)
             elif entry.mode == 'PSK':
                 call_160psk.append('1')
-                if entry.callsign not in diff_calls_160psk:
-                    diff_calls_160psk.append(entry.callsign)
+                diff_calls_160psk.append(entry.callsign)
             elif entry.mode == 'MFSK':
                 call_160ft4.append('1')
-                if entry.callsign not in diff_calls_160ft4:
-                    diff_calls_160ft4.append(entry.callsign)
+                diff_calls_160ft4.append(entry.callsign)
             elif entry.mode == 'FT8':
                 call_160ft8.append('1')
-                if entry.callsign not in diff_calls_160ft8:
-                    diff_calls_160ft8.append(entry.callsign)
-            if entry.callsign not in diff_calls_160:
-                diff_calls_160.append(entry.callsign)
+                diff_calls_160ft8.append(entry.callsign)
+            diff_calls_160.append(entry.callsign)
 
         if entry.band == '4':
             q80.append('1')
             if entry.mode == 'CW':
                 call_80cw.append('1')
-                if entry.callsign not in diff_calls_80cw:
-                    diff_calls_80cw.append(entry.callsign)
+                diff_calls_80cw.append(entry.callsign)
             elif entry.mode == 'SSB':
                 call_80ssb.append('1')
-                if entry.callsign not in diff_calls_80ssb:
-                    diff_calls_80ssb.append(entry.callsign)
+                diff_calls_80ssb.append(entry.callsign)
             elif entry.mode == 'RTTY':
                 call_80rtty.append('1')
-                if entry.callsign not in diff_calls_80rtty:
-                    diff_calls_80rtty.append(entry.callsign)
+                diff_calls_80rtty.append(entry.callsign)
             elif entry.mode == 'PSK':
                 call_80psk.append('1')
-                if entry.callsign not in diff_calls_80psk:
-                    diff_calls_80psk.append(entry.callsign)
+                diff_calls_80psk.append(entry.callsign)
             elif entry.mode == 'MFSK':
                 call_80ft4.append('1')
-                if entry.callsign not in diff_calls_80ft4:
-                    diff_calls_80ft4.append(entry.callsign)
+                diff_calls_80ft4.append(entry.callsign)
             elif entry.mode == 'FT8':
                 call_80ft8.append('1')
-                if entry.callsign not in diff_calls_80ft8:
-                    diff_calls_80ft8.append(entry.callsign)
-            if entry.callsign not in diff_calls_80:
-                diff_calls_80.append(entry.callsign)
+                diff_calls_80ft8.append(entry.callsign)
+            diff_calls_80.append(entry.callsign)
 
         if entry.band == '7':
             q40.append('1')
             if entry.mode == 'CW':
                 call_40cw.append('1')
-                if entry.callsign not in diff_calls_40cw:
-                    diff_calls_40cw.append(entry.callsign)
+                diff_calls_40cw.append(entry.callsign)
             elif entry.mode == 'SSB':
                 call_40ssb.append('1')
-                if entry.callsign not in diff_calls_40ssb:
-                    diff_calls_40ssb.append(entry.callsign)
+                diff_calls_40ssb.append(entry.callsign)
             elif entry.mode == 'RTTY':
                 call_40rtty.append('1')
-                if entry.callsign not in diff_calls_40rtty:
-                    diff_calls_40rtty.append(entry.callsign)
+                diff_calls_40rtty.append(entry.callsign)
             elif entry.mode == 'PSK':
                 call_40psk.append('1')
-                if entry.callsign not in diff_calls_40psk:
-                    diff_calls_40psk.append(entry.callsign)
+                diff_calls_40psk.append(entry.callsign)
             elif entry.mode == 'MFSK':
                 call_40ft4.append('1')
-                if entry.callsign not in diff_calls_40ft4:
-                    diff_calls_40ft4.append(entry.callsign)
+                diff_calls_40ft4.append(entry.callsign)
             elif entry.mode == 'FT8':
                 call_40ft8.append('1')
-                if entry.callsign not in diff_calls_40ft8:
-                    diff_calls_40ft8.append(entry.callsign)
-            if entry.callsign not in diff_calls_40:
-                diff_calls_40.append(entry.callsign)
+                diff_calls_40ft8.append(entry.callsign)
+            diff_calls_40.append(entry.callsign)
 
         if entry.band == '10':
             q30.append('1')
             if entry.mode == 'CW':
                 call_30cw.append('1')
-                if entry.callsign not in diff_calls_30cw:
-                    diff_calls_30cw.append(entry.callsign)
+                diff_calls_30cw.append(entry.callsign)
             elif entry.mode == 'RTTY':
                 call_30rtty.append('1')
-                if entry.callsign not in diff_calls_30rtty:
-                    diff_calls_30rtty.append(entry.callsign)
+                diff_calls_30rtty.append(entry.callsign)
             elif entry.mode == 'PSK':
                 call_30psk.append('1')
-                if entry.callsign not in diff_calls_30psk:
-                    diff_calls_30psk.append(entry.callsign)
+                diff_calls_30psk.append(entry.callsign)
             elif entry.mode == 'MFSK':
                 call_30ft4.append('1')
-                if entry.callsign not in diff_calls_30ft4:
-                    diff_calls_30ft4.append(entry.callsign)
+                diff_calls_30ft4.append(entry.callsign)
             elif entry.mode == 'FT8':
                 call_30ft8.append('1')
-                if entry.callsign not in diff_calls_30ft8:
-                    diff_calls_30ft8.append(entry.callsign)
-            if entry.callsign not in diff_calls_30:
-                diff_calls_30.append(entry.callsign)
+                diff_calls_30ft8.append(entry.callsign)
+            diff_calls_30.append(entry.callsign)
 
         if entry.band == '14':
             q20.append('1')
             if entry.mode == 'CW':
                 call_20cw.append('1')
-                if entry.callsign not in diff_calls_20cw:
-                    diff_calls_20cw.append(entry.callsign)
+                diff_calls_20cw.append(entry.callsign)
             elif entry.mode == 'SSB':
                 call_20ssb.append('1')
-                if entry.callsign not in diff_calls_20ssb:
-                    diff_calls_20ssb.append(entry.callsign)
+                diff_calls_20ssb.append(entry.callsign)
             elif entry.mode == 'RTTY':
                 call_20rtty.append('1')
-                if entry.callsign not in diff_calls_20rtty:
-                    diff_calls_20rtty.append(entry.callsign)
+                diff_calls_20rtty.append(entry.callsign)
             elif entry.mode == 'PSK':
                 call_20psk.append('1')
-                if entry.callsign not in diff_calls_20psk:
-                    diff_calls_20psk.append(entry.callsign)
+                diff_calls_20psk.append(entry.callsign)
             elif entry.mode == 'MFSK':
                 call_20ft4.append('1')
-                if entry.callsign not in diff_calls_20ft4:
-                    diff_calls_20ft4.append(entry.callsign)
+                diff_calls_20ft4.append(entry.callsign)
             elif entry.mode == 'FT8':
                 call_20ft8.append('1')
-                if entry.callsign not in diff_calls_20ft8:
-                    diff_calls_20ft8.append(entry.callsign)
-            if entry.callsign not in diff_calls_20:
-                diff_calls_20.append(entry.callsign)
+                diff_calls_20ft8.append(entry.callsign)
+            diff_calls_20.append(entry.callsign)
 
         if entry.band == '18':
             q17.append('1')
             if entry.mode == 'CW':
                 call_17cw.append('1')
-                if entry.callsign not in diff_calls_17cw:
-                    diff_calls_17cw.append(entry.callsign)
+                diff_calls_17cw.append(entry.callsign)
             elif entry.mode == 'SSB':
                 call_17ssb.append('1')
-                if entry.callsign not in diff_calls_17ssb:
-                    diff_calls_17ssb.append(entry.callsign)
+                diff_calls_17ssb.append(entry.callsign)
             elif entry.mode == 'RTTY':
                 call_17rtty.append('1')
-                if entry.callsign not in diff_calls_17rtty:
-                    diff_calls_17rtty.append(entry.callsign)
+                diff_calls_17rtty.append(entry.callsign)
             elif entry.mode == 'PSK':
                 call_17psk.append('1')
-                if entry.callsign not in diff_calls_17psk:
-                    diff_calls_17psk.append(entry.callsign)
+                diff_calls_17psk.append(entry.callsign)
             elif entry.mode == 'MFSK':
                 call_17ft4.append('1')
-                if entry.callsign not in diff_calls_17ft4:
-                    diff_calls_17ft4.append(entry.callsign)
+                diff_calls_17ft4.append(entry.callsign)
             elif entry.mode == 'FT8':
                 call_17ft8.append('1')
-                if entry.callsign not in diff_calls_17ft8:
-                    diff_calls_17ft8.append(entry.callsign)
-            if entry.callsign not in diff_calls_17:
-                diff_calls_17.append(entry.callsign)
+                diff_calls_17ft8.append(entry.callsign)
+            diff_calls_17.append(entry.callsign)
 
         if entry.band == '21':
             q15.append('1')
             if entry.mode == 'CW':
                 call_15cw.append('1')
-                if entry.callsign not in diff_calls_15cw:
-                    diff_calls_15cw.append(entry.callsign)
+                diff_calls_15cw.append(entry.callsign)
             elif entry.mode == 'SSB':
                 call_15ssb.append('1')
-                if entry.callsign not in diff_calls_15ssb:
-                    diff_calls_15ssb.append(entry.callsign)
+                diff_calls_15ssb.append(entry.callsign)
             elif entry.mode == 'RTTY':
                 call_15rtty.append('1')
-                if entry.callsign not in diff_calls_15rtty:
-                    diff_calls_15rtty.append(entry.callsign)
+                diff_calls_15rtty.append(entry.callsign)
             elif entry.mode == 'PSK':
                 call_15psk.append('1')
-                if entry.callsign not in diff_calls_15psk:
-                    diff_calls_15psk.append(entry.callsign)
+                diff_calls_15psk.append(entry.callsign)
             elif entry.mode == 'MFSK':
                 call_15ft4.append('1')
-                if entry.callsign not in diff_calls_15ft4:
-                    diff_calls_15ft4.append(entry.callsign)
+                diff_calls_15ft4.append(entry.callsign)
             elif entry.mode == 'FT8':
                 call_15ft8.append('1')
-                if entry.callsign not in diff_calls_15ft8:
-                    diff_calls_15ft8.append(entry.callsign)
-            if entry.callsign not in diff_calls_15:
-                diff_calls_15.append(entry.callsign)
+                diff_calls_15ft8.append(entry.callsign)
+            diff_calls_15.append(entry.callsign)
 
         if entry.band == '25':
             q12.append('1')
             if entry.mode == 'CW':
                 call_12cw.append('1')
-                if entry.callsign not in diff_calls_12cw:
-                    diff_calls_12cw.append(entry.callsign)
+                diff_calls_12cw.append(entry.callsign)
             elif entry.mode == 'SSB':
                 call_12ssb.append('1')
-                if entry.callsign not in diff_calls_12ssb:
-                    diff_calls_12ssb.append(entry.callsign)
+                diff_calls_12ssb.append(entry.callsign)
             elif entry.mode == 'RTTY':
                 call_12rtty.append('1')
-                if entry.callsign not in diff_calls_12rtty:
-                    diff_calls_12rtty.append(entry.callsign)
+                diff_calls_12rtty.append(entry.callsign)
             elif entry.mode == 'PSK':
                 call_12psk.append('1')
-                if entry.callsign not in diff_calls_12psk:
-                    diff_calls_12psk.append(entry.callsign)
+                diff_calls_12psk.append(entry.callsign)
             elif entry.mode == 'MFSK':
                 call_12ft4.append('1')
-                if entry.callsign not in diff_calls_12ft4:
-                    diff_calls_12ft4.append(entry.callsign)
+                diff_calls_12ft4.append(entry.callsign)
             elif entry.mode == 'FT8':
                 call_12ft8.append('1')
-                if entry.callsign not in diff_calls_12ft8:
-                    diff_calls_12ft8.append(entry.callsign)
-            if entry.callsign not in diff_calls_12:
-                diff_calls_12.append(entry.callsign)
+                diff_calls_12ft8.append(entry.callsign)
+            diff_calls_12.append(entry.callsign)
 
         if entry.band == '28':
             q10.append('1')
             if entry.mode == 'CW':
                 call_10cw.append('1')
-                if entry.callsign not in diff_calls_10cw:
-                    diff_calls_10cw.append(entry.callsign)
+                diff_calls_10cw.append(entry.callsign)
             elif entry.mode == 'SSB':
                 call_10ssb.append('1')
-                if entry.callsign not in diff_calls_10ssb:
-                    diff_calls_10ssb.append(entry.callsign)
+                diff_calls_10ssb.append(entry.callsign)
             elif entry.mode == 'RTTY':
                 call_10rtty.append('1')
-                if entry.callsign not in diff_calls_10rtty:
-                    diff_calls_10rtty.append(entry.callsign)
+                diff_calls_10rtty.append(entry.callsign)
             elif entry.mode == 'PSK':
                 call_10psk.append('1')
-                if entry.callsign not in diff_calls_10psk:
-                    diff_calls_10psk.append(entry.callsign)
+                diff_calls_10psk.append(entry.callsign)
             elif entry.mode == 'MFSK':
                 call_10ft4.append('1')
-                if entry.callsign not in diff_calls_10ft4:
-                    diff_calls_10ft4.append(entry.callsign)
+                diff_calls_10ft4.append(entry.callsign)
             elif entry.mode == 'FT8':
                 call_10ft8.append('1')
-                if entry.callsign not in diff_calls_10ft8:
-                    diff_calls_10ft8.append(entry.callsign)
-            if entry.callsign not in diff_calls_10:
-                diff_calls_10.append(entry.callsign)
+                diff_calls_10ft8.append(entry.callsign)
+            diff_calls_10.append(entry.callsign)
 
         if entry.mode == 'CW':
             qcw.append('1')
-            if entry.callsign not in diff_cws:
-                diff_cws.append(entry.callsign)
+            diff_cws.append(entry.callsign)
 
         elif entry.mode == 'SSB':
             qssb.append('1')
-            if entry.callsign not in diff_ssbs:
-                diff_ssbs.append(entry.callsign)
+            diff_ssbs.append(entry.callsign)
 
         elif entry.mode == 'RTTY':
             qrtty.append('1')
-            if entry.callsign not in diff_rttys:
-                diff_rttys.append(entry.callsign)
+            diff_rttys.append(entry.callsign)
 
         elif entry.mode == 'PSK':
             qpsk.append('1')
-            if entry.callsign not in diff_psks:
-                diff_psks.append(entry.callsign)
+            diff_psks.append(entry.callsign)
 
         elif entry.mode == 'MFSK':
             qft4.append('1')
-            if entry.callsign not in diff_ft4s:
-                diff_ft4s.append(entry.callsign)
+            diff_ft4s.append(entry.callsign)
 
         elif entry.mode == 'FT8':
             qft8.append('1')
-            if entry.callsign not in diff_ft8s:
-                diff_ft8s.append(entry.callsign)
+            diff_ft8s.append(entry.callsign)
 
-        if entry.callsign not in diff_calls:
-            diff_calls.append(entry.callsign)
-
-    len_160cw_diff = len(diff_calls_160cw)
-    len_80cw_diff = len(diff_calls_80cw)
-    len_40cw_diff = len(diff_calls_40cw)
-    len_30cw_diff = len(diff_calls_30cw)
-    len_20cw_diff = len(diff_calls_20cw)
-    len_17cw_diff = len(diff_calls_17cw)
-    len_15cw_diff = len(diff_calls_15cw)
-    len_12cw_diff = len(diff_calls_12cw)
-    len_10cw_diff = len(diff_calls_10cw)
-
-    len_160ssb_diff = len(diff_calls_160ssb)
-    len_80ssb_diff = len(diff_calls_80ssb)
-    len_40ssb_diff = len(diff_calls_40ssb)
-    len_20ssb_diff = len(diff_calls_20ssb)
-    len_17ssb_diff = len(diff_calls_17ssb)
-    len_15ssb_diff = len(diff_calls_15ssb)
-    len_12ssb_diff = len(diff_calls_12ssb)
-    len_10ssb_diff = len(diff_calls_10ssb)
-
-    len_160rtty_diff = len(diff_calls_160rtty)
-    len_80rtty_diff = len(diff_calls_80rtty)
-    len_40rtty_diff = len(diff_calls_40rtty)
-    len_30rtty_diff = len(diff_calls_30rtty)
-    len_20rtty_diff = len(diff_calls_20rtty)
-    len_17rtty_diff = len(diff_calls_17rtty)
-    len_15rtty_diff = len(diff_calls_15rtty)
-    len_12rtty_diff = len(diff_calls_12rtty)
-    len_10rtty_diff = len(diff_calls_10rtty)
-
-    len_160psk_diff = len(diff_calls_160psk)
-    len_80psk_diff = len(diff_calls_80psk)
-    len_40psk_diff = len(diff_calls_40psk)
-    len_30psk_diff = len(diff_calls_30psk)
-    len_20psk_diff = len(diff_calls_20psk)
-    len_17psk_diff = len(diff_calls_17psk)
-    len_15psk_diff = len(diff_calls_15psk)
-    len_12psk_diff = len(diff_calls_12psk)
-    len_10psk_diff = len(diff_calls_10psk)
-
-    len_160ft4_diff = len(diff_calls_160ft4)
-    len_80ft4_diff = len(diff_calls_80ft4)
-    len_40ft4_diff = len(diff_calls_40ft4)
-    len_30ft4_diff = len(diff_calls_30ft4)
-    len_20ft4_diff = len(diff_calls_20ft4)
-    len_17ft4_diff = len(diff_calls_17ft4)
-    len_15ft4_diff = len(diff_calls_15ft4)
-    len_12ft4_diff = len(diff_calls_12ft4)
-    len_10ft4_diff = len(diff_calls_10ft4)
-
-    len_160ft8_diff = len(diff_calls_160ft8)
-    len_80ft8_diff = len(diff_calls_80ft8)
-    len_40ft8_diff = len(diff_calls_40ft8)
-    len_30ft8_diff = len(diff_calls_30ft8)
-    len_20ft8_diff = len(diff_calls_20ft8)
-    len_17ft8_diff = len(diff_calls_17ft8)
-    len_15ft8_diff = len(diff_calls_15ft8)
-    len_12ft8_diff = len(diff_calls_12ft8)
-    len_10ft8_diff = len(diff_calls_10ft8)
-
-    len_160_diff = len(diff_calls_160)
-    len_80_diff = len(diff_calls_80)
-    len_40_diff = len(diff_calls_40)
-    len_30_diff = len(diff_calls_30)
-    len_20_diff = len(diff_calls_20)
-    len_17_diff = len(diff_calls_17)
-    len_15_diff = len(diff_calls_15)
-    len_12_diff = len(diff_calls_12)
-    len_10_diff = len(diff_calls_10)
+        diff_calls.append(entry.callsign)
 
     qso_160cw = len(call_160cw)
     qso_80cw = len(call_80cw)
@@ -1089,13 +953,84 @@ def statistics(request):
     qso_12ft8 = len(call_12ft8)
     qso_10ft8 = len(call_10ft8)
 
-    len_diff_cws = len(diff_cws)
-    len_diff_ssbs = len(diff_ssbs)
-    len_diff_rttys = len(diff_rttys)
-    len_diff_psks = len(diff_psks)
-    len_diff_ft4s = len(diff_ft4s)
-    len_diff_ft8s = len(diff_ft8s)
-    diff_calls_all = len(diff_calls)
+    len_160cw_diff = len(set(diff_calls_160cw))
+    len_160ssb_diff = len(set(diff_calls_160ssb))
+    len_160rtty_diff = len(set(diff_calls_160rtty))
+    len_160psk_diff = len(set(diff_calls_160psk))
+    len_160ft4_diff = len(set(diff_calls_160ft4))
+    len_160ft8_diff = len(set(diff_calls_160ft8))
+    len_160_diff = len(set(diff_calls_160))
+
+    len_80cw_diff = len(set(diff_calls_80cw))
+    len_80ssb_diff = len(set(diff_calls_80ssb))
+    len_80rtty_diff = len(set(diff_calls_80rtty))
+    len_80psk_diff = len(set(diff_calls_80psk))
+    len_80ft4_diff = len(set(diff_calls_80ft4))
+    len_80ft8_diff = len(set(diff_calls_80ft8))
+    len_80_diff = len(set(diff_calls_80))
+
+    len_40cw_diff = len(set(diff_calls_40cw))
+    len_40ssb_diff = len(set(diff_calls_40ssb))
+    len_40rtty_diff = len(set(diff_calls_40rtty))
+    len_40psk_diff = len(set(diff_calls_40psk))
+    len_40ft4_diff = len(set(diff_calls_40ft4))
+    len_40ft8_diff = len(set(diff_calls_40ft8))
+    len_40_diff = len(set(diff_calls_40))
+
+    len_30cw_diff = len(set(diff_calls_30cw))
+    len_30rtty_diff = len(set(diff_calls_30rtty))
+    len_30psk_diff = len(set(diff_calls_30psk))
+    len_30ft4_diff = len(set(diff_calls_30ft4))
+    len_30ft8_diff = len(set(diff_calls_30ft8))
+    len_30_diff = len(set(diff_calls_30))
+
+    len_20cw_diff = len(set(diff_calls_20cw))
+    len_20ssb_diff = len(set(diff_calls_20ssb))
+    len_20rtty_diff = len(set(diff_calls_20rtty))
+    len_20psk_diff = len(set(diff_calls_20psk))
+    len_20ft4_diff = len(set(diff_calls_20ft4))
+    len_20ft8_diff = len(set(diff_calls_20ft8))
+    len_20_diff = len(set(diff_calls_20))
+
+    len_17cw_diff = len(set(diff_calls_17cw))
+    len_17ssb_diff = len(set(diff_calls_17ssb))
+    len_17rtty_diff = len(set(diff_calls_17rtty))
+    len_17psk_diff = len(set(diff_calls_17psk))
+    len_17ft4_diff = len(set(diff_calls_17ft4))
+    len_17ft8_diff = len(set(diff_calls_17ft8))
+    len_17_diff = len(set(diff_calls_17))
+
+    len_15cw_diff = len(set(diff_calls_15cw))
+    len_15ssb_diff = len(set(diff_calls_15ssb))
+    len_15rtty_diff = len(set(diff_calls_15rtty))
+    len_15psk_diff = len(set(diff_calls_15psk))
+    len_15ft4_diff = len(set(diff_calls_15ft4))
+    len_15ft8_diff = len(set(diff_calls_15ft8))
+    len_15_diff = len(set(diff_calls_15))
+
+    len_12cw_diff = len(set(diff_calls_12cw))
+    len_12ssb_diff = len(set(diff_calls_12ssb))
+    len_12rtty_diff = len(set(diff_calls_12rtty))
+    len_12psk_diff = len(set(diff_calls_12psk))
+    len_12ft4_diff = len(set(diff_calls_12ft4))
+    len_12ft8_diff = len(set(diff_calls_12ft8))
+    len_12_diff = len(set(diff_calls_12))
+
+    len_10cw_diff = len(set(diff_calls_10cw))
+    len_10ssb_diff = len(set(diff_calls_10ssb))
+    len_10rtty_diff = len(set(diff_calls_10rtty))
+    len_10psk_diff = len(set(diff_calls_10psk))
+    len_10ft4_diff = len(set(diff_calls_10ft4))
+    len_10ft8_diff = len(set(diff_calls_10ft8))
+    len_10_diff = len(set(diff_calls_10))
+
+    len_diff_cws = len(set(diff_cws))
+    len_diff_ssbs = len(set(diff_ssbs))
+    len_diff_rttys = len(set(diff_rttys))
+    len_diff_psks = len(set(diff_psks))
+    len_diff_ft4s = len(set(diff_ft4s))
+    len_diff_ft8s = len(set(diff_ft8s))
+    diff_calls_all = len(set(diff_calls))
 
     # qso total:
 
@@ -1329,7 +1264,7 @@ def statistics(request):
     return render(request, 'main/statistics.html', locals())
 
 
-#@cache_page(60 * 60 * 24)
+# @cache_page(60 * 60 * 24)
 def qso_period(request):
 
     t1 = time.time()
@@ -2235,36 +2170,31 @@ def call_allbands(request):
 
     cl_160 = q_diff.filter(band='2')
     for entry in cl_160:
-        if entry.callsign not in call_on160:
-            call_on160.append(entry.callsign)
+        call_on160.append(entry.callsign)
 
     cl_80 = q_diff.filter(band='4')
     for entry in cl_80:
-        if entry.callsign not in call_on80:
-            call_on80.append(entry.callsign)
+        call_on80.append(entry.callsign)
 
     cl_40 = q_diff.filter(band='7')
     for entry in cl_40:
-        if entry.callsign not in call_on40:
-            call_on40.append(entry.callsign)
+        call_on40.append(entry.callsign)
 
     cl_20 = q_diff.filter(band='14')
     for entry in cl_20:
-        if entry.callsign not in call_on20:
-            call_on20.append(entry.callsign)
+        call_on20.append(entry.callsign)
 
     cl_15 = q_diff.filter(band='21')
     for entry in cl_15:
-        if entry.callsign not in call_on15:
-            call_on15.append(entry.callsign)
+        call_on15.append(entry.callsign)
 
     cl_10 = q_diff.filter(band='28')
     for entry in cl_10:
-        if entry.callsign not in call_on10:
-            call_on10.append(entry.callsign)
+        call_on10.append(entry.callsign)
 
-    for item in call_on160:
-        if item in call_on80 and item in call_on40 and item in call_on20 and item in call_on15 and item in call_on10:
+    for item in set(call_on160):
+        if item in set(call_on80) and item in set(call_on40) and item in set(call_on20) and item in set(call_on15) and item in \
+                set(call_on10):
             call_allbands.append(item)
     call_allbands.sort()
     len_call_allbands = len(call_allbands)
@@ -2335,7 +2265,7 @@ def call_allmode(request):
     return render(request, 'main/call_allmode.html', locals())
 
 
-#@cache_page(60 * 60 * 24)
+# @cache_page(60 * 60 * 24)
 def call_allbands_mode(request):
     t1 = time.time()
 
@@ -2491,6 +2421,17 @@ def statistics1(request):
 
     t1 = time.time()
 
+    diff_calls_160cw = []  # -- Различных позывных на диапазоне 160, cw
+    diff_calls_80cw = []
+    diff_calls_40cw = []
+    diff_calls_30cw = []
+    diff_calls_20cw = []
+    diff_calls_17cw = []
+    diff_calls_15cw = []
+    diff_calls_12cw = []
+    diff_calls_10cw = []
+    diff_cws = []
+
     f = open('media/static/basic.txt').read().split('\n')
     all_count = 0
     qso_160cw = qso_80cw = qso_40cw = qso_30cw = qso_20cw = qso_17cw = qso_15cw = qso_12cw = qso_10cw = 0
@@ -2510,22 +2451,48 @@ def statistics1(request):
         log_start = g[2]
 
         if ' 2 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_160cw.append(g[0])
             qso_160cw += 1
+
         if ' 4 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_80cw.append(g[0])
             qso_80cw += 1
-        if ' 7 ' in f[i] and ' CW' in f[i]:                
+
+        if ' 7 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_40cw.append(g[0])
             qso_40cw += 1
+
         if ' 10 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_30cw.append(g[0])
             qso_30cw += 1
+
         if ' 14 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_20cw.append(g[0])
             qso_20cw += 1
+
         if ' 18 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_17cw.append(g[0])
             qso_17cw += 1
+
         if ' 21 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_15cw.append(g[0])
             qso_15cw += 1
+
         if ' 25 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_12cw.append(g[0])
             qso_12cw += 1
+
         if ' 28 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_10cw.append(g[0])
             qso_10cw += 1
             
         if ' 2 ' in f[i] and ' SSB' in f[i]:
@@ -2653,6 +2620,16 @@ def statistics1(request):
         if ' FT8' in f[i]:
             total_ft8s += 1
 
+    len_160cw_diff = len(set(diff_calls_160cw))
+    len_80cw_diff = len(set(diff_calls_80cw))
+    len_400cw_diff = len(set(diff_calls_40cw))
+    len_30cw_diff = len(set(diff_calls_30cw))
+    len_20cw_diff = len(set(diff_calls_20cw))
+    len_17cw_diff = len(set(diff_calls_17cw))
+    len_15cw_diff = len(set(diff_calls_15cw))
+    len_12cw_diff = len(set(diff_calls_12cw))
+    len_10cw_diff = len(set(diff_calls_10cw))
+
     t2 = time.time()
     tt = str(t2 - t1)[:5]
     date_stat = datetime.datetime.now()
@@ -2661,3 +2638,205 @@ def statistics1(request):
     log_update = h[2]
 
     return render(request, 'main/statistics1.html', locals())
+
+
+def qso_160cw_d(request):
+    t1 = time.time()
+
+    diff_calls_160cw = []  # -- Различных позывных на диапазоне 160, cw
+    diff_calls_80cw = []
+    diff_calls_40cw = []
+    diff_calls_30cw = []
+    diff_calls_20cw = []
+    diff_calls_17cw = []
+    diff_calls_15cw = []
+    diff_calls_12cw = []
+    diff_calls_10cw = []
+    diff_cws = []
+
+    f = open('media/static/basic.txt').read().split('\n')
+    all_count = 0
+    qso_160cw = qso_80cw = qso_40cw = qso_30cw = qso_20cw = qso_17cw = qso_15cw = qso_12cw = qso_10cw = 0
+    qso_160ssb = qso_80ssb = qso_40ssb = qso_30ssb = qso_20ssb = qso_17ssb = qso_15ssb = qso_12ssb = qso_10ssb = 0
+    qso_160rtty = qso_80rtty = qso_40rtty = qso_30rtty = qso_20rtty = qso_17rtty = qso_15rtty = qso_12rtty = qso_10rtty = 0
+    qso_160psk = qso_80psk = qso_40psk = qso_30psk = qso_20psk = qso_17psk = qso_15psk = qso_12psk = qso_10psk = 0
+    qso_160ft4 = qso_80ft4 = qso_40ft4 = qso_30ft4 = qso_20ft4 = qso_17ft4 = qso_15ft4 = qso_12ft4 = qso_10ft4 = 0
+    qso_160ft8 = qso_80ft8 = qso_40ft8 = qso_30ft8 = qso_20ft8 = qso_17ft8 = qso_15ft8 = qso_12ft8 = qso_10ft8 = 0
+    total_160S = total_80S = total_40S = total_30S = total_20S = total_17S = total_15S = total_12S = total_10S = 0
+
+    total_cws = total_ssbs = total_rttys = total_psks = total_ft4s = total_ft8s = 0
+
+    for i in range(len(f)):
+        all_count += 1
+
+        g = f[0].split()
+        log_start = g[2]
+
+        if ' 2 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_160cw.append(g[0])
+            qso_160cw += 1
+
+        if ' 4 ' in f[i] and ' CW' in f[i]:
+            g = f[i].split()
+            diff_calls_80cw.append(g[0])
+            qso_80cw += 1
+
+
+        if ' 7 ' in f[i] and ' CW' in f[i]:
+            qso_40cw += 1
+
+        if ' 10 ' in f[i] and ' CW' in f[i]:
+            qso_30cw += 1
+
+        if ' 14 ' in f[i] and ' CW' in f[i]:
+            qso_20cw += 1
+
+        if ' 18 ' in f[i] and ' CW' in f[i]:
+            qso_17cw += 1
+
+        if ' 21 ' in f[i] and ' CW' in f[i]:
+            qso_15cw += 1
+
+        if ' 25 ' in f[i] and ' CW' in f[i]:
+            qso_12cw += 1
+
+        if ' 28 ' in f[i] and ' CW' in f[i]:
+            qso_10cw += 1
+
+        if ' 2 ' in f[i] and ' SSB' in f[i]:
+            qso_160ssb += 1
+        if ' 4 ' in f[i] and ' SSB' in f[i]:
+            qso_80ssb += 1
+        if ' 7 ' in f[i] and ' SSB' in f[i]:
+            qso_40ssb += 1
+        if ' 14 ' in f[i] and ' SSB' in f[i]:
+            qso_20ssb += 1
+        if ' 18 ' in f[i] and ' SSB' in f[i]:
+            qso_17ssb += 1
+        if ' 21 ' in f[i] and ' SSB' in f[i]:
+            qso_15ssb += 1
+        if ' 25 ' in f[i] and ' SSB' in f[i]:
+            qso_12ssb += 1
+        if ' 28 ' in f[i] and ' SSB' in f[i]:
+            qso_10ssb += 1
+
+        if ' 2 ' in f[i] and 'RTTY' in f[i]:
+            qso_160rtty += 1
+        if ' 4 ' in f[i] and 'RTTY' in f[i]:
+            qso_80rtty += 1
+        if ' 7 ' in f[i] and 'RTTY' in f[i]:
+            qso_40rtty += 1
+        if ' 10 ' in f[i] and 'RTTY' in f[i]:
+            qso_30rtty += 1
+        if ' 14 ' in f[i] and 'RTTY' in f[i]:
+            qso_20rtty += 1
+        if ' 18 ' in f[i] and 'RTTY' in f[i]:
+            qso_17rtty += 1
+        if ' 21 ' in f[i] and 'RTTY' in f[i]:
+            qso_15rtty += 1
+        if ' 25 ' in f[i] and 'RTTY' in f[i]:
+            qso_12rtty += 1
+        if ' 28 ' in f[i] and 'RTTY' in f[i]:
+            qso_10rtty += 1
+
+        if ' 2 ' in f[i] and ' PSK' in f[i]:
+            qso_160psk += 1
+        if ' 4 ' in f[i] and ' PSK' in f[i]:
+            qso_80psk += 1
+        if ' 7 ' in f[i] and ' PSK' in f[i]:
+            qso_40psk += 1
+        if ' 10 ' in f[i] and ' PSK' in f[i]:
+            qso_30psk += 1
+        if ' 14 ' in f[i] and ' PSK' in f[i]:
+            qso_20psk += 1
+        if ' 18 ' in f[i] and ' PSK' in f[i]:
+            qso_17psk += 1
+        if ' 21 ' in f[i] and ' PSK' in f[i]:
+            qso_15psk += 1
+        if ' 25 ' in f[i] and ' PSK' in f[i]:
+            qso_12psk += 1
+        if ' 28 ' in f[i] and ' PSK' in f[i]:
+            qso_10psk += 1
+
+        if ' 2 ' in f[i] and 'MFSK' in f[i]:
+            qso_160ft4 += 1
+        if ' 4 ' in f[i] and 'MFSK' in f[i]:
+            qso_80ft4 += 1
+        if ' 7 ' in f[i] and 'MFSK' in f[i]:
+            qso_40ft4 += 1
+        if ' 10 ' in f[i] and 'MFSK' in f[i]:
+            qso_30ft4 += 1
+        if ' 14 ' in f[i] and 'MFSK' in f[i]:
+            qso_20ft4 += 1
+        if ' 18 ' in f[i] and 'MFSK' in f[i]:
+            qso_17ft4 += 1
+        if ' 21 ' in f[i] and 'MFSK' in f[i]:
+            qso_15ft4 += 1
+        if ' 25 ' in f[i] and 'MFSK' in f[i]:
+            qso_12ft4 += 1
+        if ' 28 ' in f[i] and 'MFSK' in f[i]:
+            qso_10ft4 += 1
+
+        if ' 2 ' in f[i] and ' FT8' in f[i]:
+            qso_160ft8 += 1
+        if ' 4 ' in f[i] and ' FT8' in f[i]:
+            qso_80ft8 += 1
+        if ' 7 ' in f[i] and ' FT8' in f[i]:
+            qso_40ft8 += 1
+        if ' 10 ' in f[i] and ' FT8' in f[i]:
+            qso_30ft8 += 1
+        if ' 14 ' in f[i] and ' FT8' in f[i]:
+            qso_20ft8 += 1
+        if ' 18 ' in f[i] and ' FT8' in f[i]:
+            qso_17ft8 += 1
+        if ' 21 ' in f[i] and ' FT8' in f[i]:
+            qso_15ft8 += 1
+        if ' 25 ' in f[i] and ' FT8' in f[i]:
+            qso_12ft8 += 1
+        if ' 28 ' in f[i] and ' FT8' in f[i]:
+            qso_10ft8 += 1
+
+        if ' 2 ' in f[i]:
+            total_160S += 1
+        if ' 4 ' in f[i]:
+            total_80S += 1
+        if ' 7 ' in f[i]:
+            total_40S += 1
+        if ' 10 ' in f[i]:
+            total_30S += 1
+        if ' 14 ' in f[i]:
+            total_20S += 1
+        if ' 18 ' in f[i]:
+            total_17S += 1
+        if ' 21 ' in f[i]:
+            total_15S += 1
+        if ' 25 ' in f[i]:
+            total_12S += 1
+        if ' 28 ' in f[i]:
+            total_10S += 1
+
+        if ' CW' in f[i]:
+            total_cws += 1
+        if ' SSB' in f[i]:
+            total_ssbs += 1
+        if ' RTTY' in f[i]:
+            total_rttys += 1
+        if ' PSK' in f[i]:
+            total_psks += 1
+        if ' MFSK' in f[i]:
+            total_ft4s += 1
+        if ' FT8' in f[i]:
+            total_ft8s += 1
+
+    len_160cw_diff = len(set(diff_calls_160cw))
+    len_80cw_diff = len(set(diff_calls_80cw))
+
+    t2 = time.time()
+    tt = str(t2 - t1)[:5]
+    date_stat = datetime.datetime.now()
+
+    h = f[all_count - 1].split()
+    log_update = h[2]
+
+    return render(request, 'main/qso_160cw.html', locals())
