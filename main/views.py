@@ -468,22 +468,30 @@ def max_qso(request):
 
 
 def qsls(request):
-    x = 'LOTW'
-    y = 'LOTW '*2
-    z = 'LOTW '*3
 
-    fq = [x, y, z]
+    v = 'LOTW'
+    w = 'LOTW ' * 2
+    x = 'LOTW ' * 3
+    y = 'LOTW ' * 4
+    z = 'LOTW ' * 5
+
+    fq = [v, w, x, y, z]
 
     fqq1 = random.choice(fq)
     fqq2 = random.choice(fq)
     fqq3 = random.choice(fq)
+    fqq4 = random.choice(fq)
+    fqq5 = random.choice(fq)
 
-    while fqq3 == fqq1 or fqq3 == fqq2 or fqq2 == fqq1:  # Делать случайные выборки до тех пор, \
-        # пока значения x,y,z не будут различными:
+    while fqq5 == fqq4 or fqq5 == fqq3 or fqq5 == fqq2 or fqq5 == fqq1 or fqq4 == fqq3 or fqq4 == fqq2 or\
+            fqq4 == fqq1 or fqq3 == fqq2 or fqq3 == fqq1 or fqq2 == fqq1:  # Делать случайные выборки до тех пор, \
+        # пока значения v, w, x, y, z не будут различными:
 
         fqq1 = random.choice(fq)
         fqq2 = random.choice(fq)
         fqq3 = random.choice(fq)
+        fqq4 = random.choice(fq)
+        fqq5 = random.choice(fq)
 
     return render(request, 'main/qsls.html', locals())
 
@@ -504,6 +512,7 @@ def tv(request):
 
 # @cache_page(60 * 60 * 24)
 def statistics(request):
+
     t1 = time.time()  # Первая отсечка времени (для обсчета времени, затраченного на операцию "статистика")
 
     diff_calls_160cw = []
