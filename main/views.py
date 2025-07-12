@@ -402,8 +402,9 @@ def new_calls_old(request):
 
 # @cache_page(60 * 60 * 24)
 def new_calls(request):
-    t1 = time.time()
 
+    t1 = time.time()
+    total_views = 150  # Количество позывных на экране
     logorder = []
     logorder_one = []
 
@@ -412,21 +413,23 @@ def new_calls(request):
     for item in newcalls:
         logorder.append(item.callsign)
     for i in range(len(logorder) + 1):
-        if len(logorder_one) <= 250:
+        if len(logorder_one) <= total_views:
             if logorder.count(logorder[i]) == 1:
                 logorder_one.append(logorder[i])
     q_zz = Entry.objects.filter(callsign=logorder_one[0])
-    q_z = Entry.objects.filter(callsign=logorder_one[250])
+    q_z = Entry.objects.filter(callsign=logorder_one[total_views])
 
     t2 = time.time()
     tt = str(t2 - t1)[:4]
     date_new = datetime.datetime.now()
 
-    return render(request, 'main/new_calls.html', locals())
+    return render(request, 'main/new_calls.html',
+                  {'logorder_one': logorder_one, 'q_zz': q_zz, 'q_z': q_z, 'tt': tt, 'date_new': date_new})
 
 
 # @cache_page(60)
 def max_qso(request):
+
     t1 = time.time()
 
     all_calls = []
@@ -627,6 +630,23 @@ def statistics(request):
     call_15cw = []
     call_12cw = []
     call_10cw = []
+
+    total_cws = 0
+    total_ssbs = 0
+    total_rttys = 0
+    total_psks = 0
+    total_ft4s = 0
+    total_ft8s = 0
+
+    total_160S = 0
+    total_80S = 0
+    total_40S = 0
+    total_30S = 0
+    total_20S = 0
+    total_17S = 0
+    total_15S = 0
+    total_12S = 0
+    total_10S = 0
 
     call_160ssb = []
     call_80ssb = []
@@ -959,7 +979,7 @@ def statistics(request):
     qso_12ft8 = len(call_12ft8)
     qso_10ft8 = len(call_10ft8)
 
-    len_160cw_diff = len(set(diff_calls_160cw))
+    len_160cw_diff = len(set(diff_calls_160cw))  # Число различных позывных 160cw
     len_160ssb_diff = len(set(diff_calls_160ssb))
     len_160rtty_diff = len(set(diff_calls_160rtty))
     len_160psk_diff = len(set(diff_calls_160psk))
@@ -1239,12 +1259,12 @@ def statistics(request):
 
     # Дата последней в логе qso:
 
-    qs = q_diff.all().order_by('-id')[0]
+    qs = q_diff.order_by('-id')[0]
     log_update = qs.datetime.date()
 
     # Дата первой в логе qso:
 
-    qs = q_diff.all().order_by('id')[0]  # Вместо 01, 02 выводим Jan, Feb ...
+    qs = q_diff.order_by('id')[0]  # Вместо 01, 02 выводим Jan, Feb ...
     log_start = qs.datetime.date()
 
     # Если количество qso по диопазонам-видам и общее количество qso СОВПАДАЕТ, то печатаем:  coincidence = '*'
